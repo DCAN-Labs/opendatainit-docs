@@ -16,6 +16,6 @@ nav:
   - "Step 1: Installation": installation.md
   - "Step 2: Prepare Data": dataprep.md
   - "Step 3: Initalize & Configure DataLad": datalad-init.md
+  - "Step 4: OpenNeuro Integration": openneuro.md
   - Making Changes: making-changes.md
-  - OpenNeuro: openneuro.md
       

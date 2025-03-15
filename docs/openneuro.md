@@ -1,4 +1,4 @@
-# Integration With OpenNeuro
+# Step 4: Integration With OpenNeuro
 
 BOBSRepository on OpenNeuro: https://openneuro.org/datasets/ds005450
 

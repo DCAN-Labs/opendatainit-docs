@@ -1,0 +1,1 @@
+https://opendatainit-docs.readthedocs.io/en/latest/

@@ -1,6 +1,9 @@
 # Step 2: Preparing Data
 
-## BIDS Standard Compliance
+## Make Folder for DataLad Repository
+If you haven’t already, make a directory for your DataLad repo: the name of the folder should match the name of your repository (e.g. the name of the bobsrepository DataLad folder is `bobsrepository`). Add the contents you would like to include and adjust as needed based on the rest of this page.
+
+## BIDS Standard
 Make sure your data follows BIDS standards, including files such as `dataset_description.json` and a `README`. Any files that are required for the repository configuration with Amazon AWS that violate BIDS spec should be added to the file `.bidsignore`. For example, in the BOBS Repository, there are the files `index.html` and `V1.0.zip`: 
 
 ```
@@ -26,8 +29,21 @@ bobsrepository/
 |__ V1.0.zip #.bigsignore
 ```
 
-## `.gitattributes` Setup
+### Running BIDS Validation
+When your folder is fully set up, make sure to run BIDS validation as a final check. Also remember to run BIDS validation after adding any additional files needed (e.g. `index.html` and a zip file - see [Amazon AWS Configuration](#amazon-aws-configuration))
+```bash
+# Activate your conda environment:
+module load conda
+source activate datalad_BR
 
+# Run BIDS validation with deno:
+deno run -A jsr:@bids/validator <dataset path> > /path/to/denoresults.txt
+```
+Address all ERRORS in the output. WARNINGS are suggestions and not required for validation, but ERRORS are required to be addresseed and will cause issues if not resolved.
+
+--------------------
+
+## OpenNeuro Compatibility Configuration
 The `.gitattributes` file needs to be properly set up mostly for OpenNeuro compatibility - see the section of their website on [Repository Conventions](https://docs.openneuro.org/git.html#repository-conventions):
 
 > A dataset must always be present in the root level of the repository.
@@ -50,10 +66,10 @@ README* annex.largefiles=nothing
 LICENSE annex.largefiles=nothing
 ```
 
-### Annex Backend (SHA256E vs MD5E)
+#### Annex Backend (SHA256E vs MD5E)
 OpenNeuro requires that you use SHA256E for the annex backend. `git-annex` assigns MD5E by default for S3, but other backends (SHA256E, SHA1E) also work for AWS, so you will need to specify this in the `.gitattributes` file with `* annex.backend=SHA256E` as shown above.
 
-### Comparison of `annex.largefiles` Rules    
+#### Comparison of `annex.largefiles` Rules    
 Depending on the file, OpenNeuro requires or recommends that files be git-annex files vs regular git files. This is specified in `.gitattributes` by `annex.largefiles` as follows:
  
 **Convention:** `annex.largefiles=nothing`      
@@ -68,20 +84,13 @@ Depending on the file, OpenNeuro requires or recommends that files be git-annex 
 **Meaning:** File is always stored in annex, no matter the size.        
 **Examples:** `phenotype/*.tsv` files
 
-## Generate non-BIDS Files
+---------------
+
+## Amazon AWS Configuration
 For sharing via AWS, it's best to add:
 
 1. A zip file that contains the full contents of the BIDS repository. This should only contain the files/folders relevant to the BIDS repository, so can exclude files like `.bidsignore` and `.gitignore` as well as `index.html`. This file enables users to quickly download the entire contents of the repository as a zip file via their browser by simply clicking on a link.
-2. `index.html` file: This file is the interface for the repository on Amazon AWS. For instance, the BOBSRepository AWS page is here: [https://bobsrepository.s3.amazonaws.com/index.html](https://bobsrepository.s3.amazonaws.com/index.html). It allows you to browse the contents of the repo and also download the full contents (see **Download Entire Repository** button at the bottom of the page, which links to the zip file). The contents of the index.html file for this page can be viewed [here](index.html).
+2. `index.html` file: This file is the interface for the repository on Amazon AWS. For instance, the BOBSRepository AWS page is here: [https://bobsrepository.s3.amazonaws.com/index.html](https://bobsrepository.s3.amazonaws.com/index.html). It allows you to browse the contents of the repo and also download the full contents (see **Download Entire Repository** button at the bottom of the page, which links to the zip file). The contents of the index.html file for this page can be viewed [here](https://github.com/DCAN-Labs/opendatainit-docs/blob/main/docs/index.html).
 
-## Run BIDS Validation (TO DO)
+Note that these files are not BIDS spec, and so will need to be added to `.bidsignore` as noted above ([BIDS Standard](#bids-standard)).
 
-Activate your conda environment:
-```bash
-module load conda
-source activate datalad_BR
-```
-
-Use `deno` to run BIDS validation: `deno run -A jsr:@bids/validator <dataset path> > /path/to/denoresults.txt`
-
-Address all ERRORS in the output. WARNINGS are suggestions and not required for validation, but ERRORS are required and will cause issues if not resolved.
