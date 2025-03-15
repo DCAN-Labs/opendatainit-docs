@@ -10,6 +10,16 @@ source activate datalad_BR
 export AWS_ACCESS_KEY_ID="<access_key_id>"
 export AWS_SECRET_ACCESS_KEY="<secret_access_key>"
 ```
+
+## Configuration
+
+OpenNeuro - backend annex - use SHA
+
+### Setting up .gitattributes
+
+OpenNeuro requires that certain files be annexed vs not. 
+
+
 ## Initialize DataLad repo
 ```bash
 datalad create --force 
