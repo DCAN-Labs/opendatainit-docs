@@ -1,24 +1,20 @@
-# Setting Up DataLad Repository
+# Initializing DataLad Repository
 
 **The following uses bobsrepository as an example. Replace bobsrepository with the name of your repository.**
 
-## Set up folder for DataLad repository and add data
+## Activate Conda Environment and Set Environmental Variables
 
+Activate your conda environment:
 ```bash
 module load conda
 source activate datalad_BR
+```
+
+Set
+```bash
 export AWS_ACCESS_KEY_ID="<access_key_id>"
 export AWS_SECRET_ACCESS_KEY="<secret_access_key>"
 ```
-
-## Configuration
-
-OpenNeuro - backend annex - use SHA
-
-### Setting up .gitattributes
-
-OpenNeuro requires that certain files be annexed vs not. 
-
 
 ## Initialize DataLad repo
 ```bash

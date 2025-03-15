@@ -2,12 +2,6 @@
 
 BOBSRepository on OpenNeuro: https://openneuro.org/datasets/ds005450
 
-## Install OpenNeuro CLI
-
-- Install deno: `conda install conda-forge::deno`
-- Run `deno run -A jsr:@openneuro/cli --help` - should see usage if it’s working
-
-
 ## Configure credentials
 
 - Generate API here after logging into your account
@@ -20,10 +14,6 @@ export OPENNEURO_API_KEY=<api_key>
 deno run -A jsr:@openneuro/cli login --error-reporting true
 ```
 
-
-## Run BIDS validation
-
-Run: `deno run -A jsr:@bids/validator <dataset path>`
 
 ## Push Changes to OpenNeuro Repository
 
