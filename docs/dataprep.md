@@ -43,6 +43,11 @@ Address all ERRORS in the output. WARNINGS are suggestions and not required for 
 
 --------------------
 
+## De-identification and Permission to Share Publicly
+Perhaps it goes without saying, but first make sure that the dataset actually CAN be shared publicly without violating HIPAA or data use agreements! It’s possible you may have to perform some additional steps to de-identify the data, which may include defacing (see documentation on CDNI’s Brain or more extensive documentation for infant data defacing here), using DICAT to anonymize DICOMs before conversion/processing, and/or other tools. Please see [this page](https://cdnis-brain.readthedocs.io/deidentification/#de-identification-of-mri-image-data) on CDNI's Brain for more information on how to perform defacing and other de-identification.
+
+--------------------
+
 ## OpenNeuro Compatibility Configuration
 The `.gitattributes` file needs to be properly set up mostly for OpenNeuro compatibility - see the section of their website on [Repository Conventions](https://docs.openneuro.org/git.html#repository-conventions):
 

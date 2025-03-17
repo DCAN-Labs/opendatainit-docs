@@ -1,6 +1,6 @@
 # Initializing DataLad Repository
 
-**The following uses bobsrepository as an example. Replace bobsrepository with the name of your repository.**
+Below we walk through setting up DataLad using BOBs Repository as an example, including setting Amazon S3 as a special remote. See additional documentation here: [Walk-through: Amazon S3 as a special remote](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#). 
 
 ### Activate Conda Environment and Set Environmental Variables
 Activate your conda environment and set your AWS access and secret keys as environmental variables:
@@ -11,16 +11,27 @@ export AWS_ACCESS_KEY_ID="<access_key_id>"
 export AWS_SECRET_ACCESS_KEY="<secret_access_key>"
 ```
 
-### Initialize DataLad repo
+*Note: if you are using Amazon AWS as a special remote, then the AWS access and secret keys will be provided to you by the Informatics Hub (i.e. Thomas Pengo).*
+
+### DataLad: Initialize Repository!
+Go to your project folder, initialize datalad, and save (`datalad save` basically combines git commit and git push):
 ```bash
 cd /path/to/your/datalad/repo
 datalad create --force 
-datalad save -m "added subset of data"
+datalad save -m "example commit message"
 ```
 
-### Add Amazon S3 as Special Remote
-The flags `exporttree=yes` and `versioning=yes` use the original file names instead of replacing them with MD5 hashes. Because MD5 hashes are used for version control, the first flag used in isolation will cause you to lose the direct linkage to the hash-based versioning system, overwriting and removing access to older file versions. The flag `versioning=yes` is therefore required in order to preserve prior file versions on AWS.
+Use `datalad status` command as needed to make sure local changes are tracked
 
+### Add Amazon S3 as Special Remote
+
+**NOTE:** This SOP is specifically for small repositories (e.g. <5-10 GB) that could reasonably be downloaded all at once via a web browser. The datasets we typically work with contain hundreds to thousands of subjects, so it would be impractical for someone accessing the data to try to download the full dataset at once. Large datasets therefore need to be set up in a different way, employing dataset hierarchies to create what are called “submodules” for each subject folder.
+
+Documentation on how to add Amazon AWS as a special remote can be found in the DataLad Handbook [here](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#).
+
+The default behavior of DataLad is to name files with MD5 hashes, which are used by `git-annex` under the hood to manage file versioning. The drawback to this is that the filenames are no longer human-readable unless users download the data via DataLad, which may be an unnecessary barrier to users for data access. We therefore recommend using additional flags when linking the repository to the special remote (`exporttree=yes` and `versioning=yes`). The flags `exporttree=yes` and `versioning=yes` use the original file names instead of replacing them with MD5 hashes. Because MD5 hashes are used for version control, the first flag used in isolation will cause you to lose the direct linkage to the hash-based versioning system, overwriting and removing access to older file versions. The flag `versioning=yes` is therefore required in order to preserve prior file versions on AWS.
+
+To add Amazon S3 as a special remote, use the following command:
 ```bash
 git annex initremote aws type=S3 encryption=none bucket=bobsrepository /
 autoenable=true signature=v4 datacenter=us-east-2 public=yes exporttree=yes versioning=yes
