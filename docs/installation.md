@@ -1,4 +1,4 @@
-# Step 1: Installation
+# Local Installation & Configuration
 
 ## Create Conda Environment
 There currently isn’t a lab-wide datalad environment set up on MSI with the correct dependencies for the steps below. Please create your own conda environment (also refer to instructions [here](https://cdnis-brain.readthedocs.io/vscode/#conda-environments) if needed - also note that you may need to first load conda module):

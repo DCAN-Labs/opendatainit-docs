@@ -1,5 +1,5 @@
 # How To Guide: Open Data Repository Setup
-Here we describe the steps required to properly set up an open data repository via the following mechanisms, largely using the [BOBS Repository](https://bobsrepository.readthedocs.io/en/latest/) as an example:
+Here we describe the steps required to properly set up an open data repository via the following mechanisms, using the [BOBS Repository](https://bobsrepository.readthedocs.io/en/latest/) as an example:
 
 (1) Setting up DataLad repository for versioning and tracking of data provenance        
 (2) Making the data repository publicly available via **Amazon AWS** and **OpenNeuro**        
@@ -23,3 +23,27 @@ The Amazon Simple Storage Service, or simply [Amazon S3](https://aws.amazon.com/
 See the [Open Data Registry contribution guidelines](https://github.com/awslabs/open-data-registry/blob/main/CONTRIBUTING.md):
 > *The goal of this registry is to expand access to useful data available on AWS. With that in mind, we prefer to list datasets that are clearly documented, are actively supported, can be used for research or educational purposes, and are optimized for analysis using AWS tools. Datasets are included at the discretion of the AWS Open Data team, which may remove datasets from the registry at any time. Data providers are responsible for maintaining and supporting the data that they share.
 For more guidance on how to contribute to this registry and what kinds of data are suitable for sharing, please review the [Amazon Open Source Code of Conduct](https://aws.github.io/code-of-conduct) and [AWS Acceptable Use Policy](https://aws.amazon.com/aup/).”
+
+## Checklist
+
+Below is a checklist of the essential tasks outlined in this Docs website. Feel free to make a copy for yourself for tracking purposes!
+
+**General requirements:**       
+<input type="checkbox"> Read through contents of this Docs website      
+<input type="checkbox"> Ensure that permissions to share publicly are in place (e.g. completing a data use agreement)       
+<input type="checkbox"> Complete any de-identification necessary for your specific data     
+<input type="checkbox"> Ensure that data is in BIDs format  
+
+**Initialize AWS Bucket:**      
+<input type="checkbox"> Communicate with Informatics Hub            
+<input type="checkbox"> Fork AWS Github repo and create a new YAML file for your data repository        
+<input type="checkbox"> Create Tutorial     
+<input type="checkbox"> Submit pull request     
+<input type="checkbox"> Configure AWS bucket once created
+
+**Set up DataLad using Amazon S3 as special remote:**  
+<input type="checkbox"> Complete initial setup and requirements steps  
+<input type="checkbox"> Complete steps to initialize DataLad repository  
+<input type="checkbox"> Add Amazon S3 as special remote   
+<input type="checkbox"> Add OpenNeuro as a GitHub sibling         
+<input type="checkbox"> Create GitHub Sibling and Publish
