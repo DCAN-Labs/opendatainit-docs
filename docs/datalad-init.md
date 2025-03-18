@@ -3,15 +3,23 @@
 Below we walk through setting up DataLad using BOBs Repository as an example, including setting Amazon S3 as a special remote. See additional documentation here: [Walk-through: Amazon S3 as a special remote](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#). 
 
 ### Activate Conda Environment and Set Environmental Variables
-Activate your conda environment and set your AWS access and secret keys as environmental variables:
+Activate your conda environment:
 ```bash
 module load conda
 source activate datalad_BR
-export AWS_ACCESS_KEY_ID="<access_key_id>"
-export AWS_SECRET_ACCESS_KEY="<secret_access_key>"
 ```
 
-*Note: if you are using Amazon AWS as a special remote, then the AWS access and secret keys will be provided to you by the Informatics Hub (i.e. Thomas Pengo).*
+Set your AWS access and secret keys as environmental variables or source stored credentials if you have a `~/.aws/fcpindi.sh` file configured (see instructions [here](installation.md#store-aws-credentials-github-token-optional)):
+```bash
+# Set AWS credentials as environmental variables
+export AWS_ACCESS_KEY_ID="<access_key_id>"
+export AWS_SECRET_ACCESS_KEY="<secret_access_key>"
+
+# OR source stored credentials
+source ~/.aws/fcpindi.sh
+```
+
+*Note: if you are using Amazon AWS as a special remote, then the AWS access and secret keys will be provided to you by the Informatics Hub.*
 
 ### DataLad: Initialize Repository!
 Go to your project folder, initialize datalad, and save (`datalad save` basically combines git commit and git push):
