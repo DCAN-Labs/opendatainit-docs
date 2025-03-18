@@ -3,7 +3,7 @@
 The process for making an S3 bucket is a bit different than one might expect as it first requires review and approval from Amazon. This is done by forking the AWS open-data-registry repository on Github, creating a new configuration file with information about your data, and submitting a pull request (PR) for review. The [AWS Onboarding Handbook for Data Providers](https://assets.opendata.aws/aws-onboarding-handbook-for-data-providers-en-US.pdf) provides a straightforward summary to make the process fairly simple and quick as long as you have information about the data readily available.
 
 ## Step 1: Communicate With Informatics Hub
-Please refer to the internal documentation for this step [here](https://drive.google.com/file/d/1FnK1Mi5KImr2UkgCw5IpF_Dp_e-YvK6z/view?usp=sharing).
+Please refer to the internal documentation for this step [here](https://docs.google.com/document/d/1qEC6YwhW-kik2z1EZAlhhUgNSrgH9XlweW-avR00Yls/edit?usp=sharing).
 
 ## Step 2: Fork AWS Github Repo & Create YAML
 ***Forking***  
