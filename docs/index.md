@@ -17,12 +17,11 @@ The Amazon Simple Storage Service, or simply [Amazon S3](https://aws.amazon.com/
 
 ## General Requirements
 
-### [De-identification and permission to share publicly](dataprep.md#de-identification-and-permission-to-share-publicly)
-### [Format data according to BIDS standards](dataprep.md#bids-standard)
-### Amazon AWS: Review Contribution and Community Guidelines
-See the [Open Data Registry contribution guidelines](https://github.com/awslabs/open-data-registry/blob/main/CONTRIBUTING.md):
-> *The goal of this registry is to expand access to useful data available on AWS. With that in mind, we prefer to list datasets that are clearly documented, are actively supported, can be used for research or educational purposes, and are optimized for analysis using AWS tools. Datasets are included at the discretion of the AWS Open Data team, which may remove datasets from the registry at any time. Data providers are responsible for maintaining and supporting the data that they share.
-For more guidance on how to contribute to this registry and what kinds of data are suitable for sharing, please review the [Amazon Open Source Code of Conduct](https://aws.github.io/code-of-conduct) and [AWS Acceptable Use Policy](https://aws.amazon.com/aup/).”
+**[De-identification and permission to share publicly](dataprep.md#de-identification-and-permission-to-share-publicly)**        
+**[Format data according to BIDS standards](dataprep.md#bids-standard)**        
+**Amazon AWS: Review [Open Data Registry contribution & community guidelines](https://github.com/awslabs/open-data-registry/blob/main/CONTRIBUTING.md):**        
+> *The goal of this registry is to expand access to useful data available on AWS. With that in mind, we prefer to list datasets that are clearly documented, are actively supported, can be used for research or educational purposes, and are optimized for analysis using AWS tools. Datasets are included at the discretion of the AWS Open Data team, which may remove datasets from the registry at any time. Data providers are responsible for maintaining and supporting the data that they share.*     
+> *For more guidance on how to contribute to this registry and what kinds of data are suitable for sharing, please review the [Amazon Open Source Code of Conduct](https://aws.github.io/code-of-conduct) and [AWS Acceptable Use Policy](https://aws.amazon.com/aup/).*
 
 ## Checklist
 

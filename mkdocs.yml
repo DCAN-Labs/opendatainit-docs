@@ -16,7 +16,7 @@ nav:
   - Create AWS S3 Bucket: aws.md
   - "Local Installation/Configuration": installation.md
   - Prepare Data: dataprep.md
-  - Initalize DataLad: datalad-init.md
+  - "Initialize & Configure DataLad": datalad-init.md
   - OpenNeuro Integration: openneuro.md
   - Maintenance: maintenance.md
       

@@ -1,4 +1,4 @@
-# Step 2: Preparing Data
+# Preparing Data
 
 ## Make Folder for DataLad Repository
 If you haven’t already, make a directory for your DataLad repo: the name of the folder should match the name of your repository (e.g. the name of the bobsrepository DataLad folder is `bobsrepository`). Add the contents you would like to include and adjust as needed based on the rest of this page.
