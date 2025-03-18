@@ -10,6 +10,12 @@ export AWS_ACCESS_KEY_ID="<access_key_id>"
 export AWS_SECRET_ACCESS_KEY="<secret_access_key>"
 ```
 
+Login via OpenNeuro CLI:
+```bash
+export OPENNEURO_API_KEY=<api_key>
+deno run -A jsr:@openneuro/cli login --error-reporting true
+```
+
 ## Updating repository files/contents
 See the [Modify Content](https://handbook.datalad.org/en/latest/basics/101-103-modify.html#modify-content) section of the DataLad Handbook. 
 
@@ -24,13 +30,15 @@ datalad unlock *
 zip -r bobsrepository.zip dataset_description.json participants.tsv sub-*
 ```
 
-To save and push your changes, run:
+To save and push your changes (to AWS, GitHub, and OpenNeuro), run:
 ```bash
 datalad save -m "Description of changes"
 git annex export main --to aws
 datalad push --to github
+datalad push --to openneuro.org --data nothing
 ```
 This will automatically lock the files again.
+
 
 ## Accessing previous file versions
 

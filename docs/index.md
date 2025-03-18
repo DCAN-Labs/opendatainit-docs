@@ -1,5 +1,5 @@
 # How To Guide: Open Data Repository Setup
-Here we describe the steps required to properly set up an open data repository via the following mechanisms:
+Here we describe the steps required to properly set up an open data repository via the following mechanisms, largely using the [BOBS Repository](https://bobsrepository.readthedocs.io/en/latest/) as an example:
 
 (1) Setting up DataLad repository for versioning and tracking of data provenance        
 (2) Making the data repository publicly available via **Amazon AWS** and **OpenNeuro**        

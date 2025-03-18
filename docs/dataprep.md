@@ -95,7 +95,7 @@ Depending on the file, OpenNeuro requires or recommends that files be git-annex 
 For sharing via AWS, it's best to add:
 
 1. A zip file that contains the full contents of the BIDS repository. This should only contain the files/folders relevant to the BIDS repository, so can exclude files like `.bidsignore` and `.gitignore` as well as `index.html`. This file enables users to quickly download the entire contents of the repository as a zip file via their browser by simply clicking on a link.
-2. `index.html` file: This file is the interface for the repository on Amazon AWS. For instance, the BOBSRepository AWS page is here: [https://bobsrepository.s3.amazonaws.com/index.html](https://bobsrepository.s3.amazonaws.com/index.html). It allows you to browse the contents of the repo and also download the full contents (see **Download Entire Repository** button at the bottom of the page, which links to the zip file). The contents of the index.html file for this page can be viewed [here](https://github.com/DCAN-Labs/opendatainit-docs/blob/main/docs/index.html).
+2. `index.html` file: This file is the interface for the repository on Amazon AWS. For instance, the BOBSRepository AWS page is here: [https://bobsrepository.s3.amazonaws.com/index.html](https://bobsrepository.s3.amazonaws.com/index.html). It allows you to browse the contents of the repo and also download the full contents (see **Download Entire Repository** button at the bottom of the page, which links to the zip file). The contents of the index.html file for this page can be viewed [here](https://github.com/DCAN-Labs/bobsrepository/blob/main/index.html).
 
 Note that these files are not BIDS spec, and so will need to be added to `.bidsignore` as noted above ([BIDS Standard](#bids-standard)).
 

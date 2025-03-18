@@ -29,13 +29,5 @@ enableremote: 1 failed
  
 .: openneuro.org(-) [https://openneuro.org/git/0/ds005450 (git)]
 
-
-$ datalad push --to  openneuro.org --data nothing
-publish(ok): . (dataset) [refs/heads/main->openneuro.org:refs/heads/main 8f18615..c62c0b4]                                                                    
-publish(error): . (dataset) [refs/heads/git-annex->openneuro.org:refs/heads/git-annex [rejected] (non-fast-forward)]                                          
-action summary:                                                                                                                                               
-  publish (error: 1, ok: 1)
-Hints: 
-1: Updates were rejected because a pushed branch tip is behind its remote counterpart. If you want to integrate the remote changes, use 'git pull' before pushing again. See the 'Note about fast-forwards' in 'git push --help' for details.
-
+$ datalad push --to openneuro.org --data nothing
 ```
