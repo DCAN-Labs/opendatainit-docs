@@ -3,7 +3,7 @@
 The process for making an S3 bucket is a bit different than one might expect as it first requires review and approval from Amazon. This is done by forking the AWS open-data-registry repository on Github, creating a new configuration file with information about your data, and submitting a pull request (PR) for review. The [AWS Onboarding Handbook for Data Providers](https://assets.opendata.aws/aws-onboarding-handbook-for-data-providers-en-US.pdf) provides a straightforward summary to make the process fairly simple and quick as long as you have information about the data readily available.
 
 ## Step 1: Communicate With Informatics Hub
-Please refer to the internal documentation for this step here.
+Please refer to the internal documentation for this step [here](https://drive.google.com/file/d/1FnK1Mi5KImr2UkgCw5IpF_Dp_e-YvK6z/view?usp=sharing).
 
 ## Step 2: Fork AWS Github Repo & Create YAML
 ***Forking***  
@@ -23,6 +23,7 @@ After forking, you’ll need to add a new YAML file containing information about
 * Under `Resources`:  
     * Leave `Region` and `Type` unchanged  
     * For `ARN` and `Explore`, replace the string `bobsrepository` with the short name you have chosen to use for your own repository (the bucket and links don’t actually exist yet of course, but that’s ok)  
+* We recommend choosing a license for your repository. This is not required, however, in which case you can just follow the README template example for this field and enter: `There are no restrictions on the use of this data`
 
 *Note that you are welcome to proceed to Step 3 to submit a pull request before you are finished finalizing the YAML file. Just make sure to keep the PR in draft mode until ready for review.*
 
@@ -33,26 +34,28 @@ Within the YAML file (under `DataAtWork` > `Tutorials`), you are required to pro
 Submit a PR to the central repository and inform the Informatics Hub. Informatics will contact Amazon to link the repository with the MIDB account (Step 4 in the [AWS Handbook](https://assets.opendata.aws/aws-onboarding-handbook-for-data-providers-en-US.pdf)), create the S3 bucket referenced in the YAML (assuming it is available), and inform Amazon that the necessary steps to merge the PR have been completed. Once merged (this may take a few days), you will be provided with AWS credentials for read/write access to the bucket and you can proceed to upload your data! 
 
 ## Step 5: Configure AWS Bucket
-Informatics will handle the majority of the configurations required to make the bucket publicly available, but there may be additional features you wish to employ that require access to the AWS web console. You can either request Informatics (the "root" user) to make these updates for you or ask that they add you as an [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) to access the web console directly to make changes.
+Informatics will handle the majority of the configurations required to make the bucket publicly available, but there may be additional features you wish to employ that require access to the AWS web console. You can either request Informatics (the "root" user) to make these updates for you or ask that they add you as an [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) to access the web console directly to make changes. The following are recommended configurations to ensure public accessibility and allow tracking for repository usage:
 
-**Importantly, the SOP for DataLad setup REQUIRES ACLs (access-control lists) to be enabled under Object Ownership on the web console.** Though Amazon generally recommends using a bucket policy instead, our current process requires that A*CLs enabled* be checked under *Object Ownership*:
+### Enable ACLs Under Object Ownership
+Though Amazon generally recommends using a bucket policy instead, our current process requires that **ACLs enabled** be checked under **Object Ownership**:
 
 ![](images/edit-object-ownership.jpg)
 
-### Recommended Configurations
+### Update ACL Permissions
+While AWS buckets are publicly accessible and can be downloaded using Cyberduck or a web browser (if the `index.html` file is properly configured), individual file permissions may still prevent users from accessing the repository.
 
-**Making DataLad Repository Available for Public Download via DataLad**     
-Even though the AWS buckets are already made publicly available and can easily be downloaded via Cyberduck or using your web browser (if the `index.html` file in the repository is configured correctly), there are still individual file permissions that prohibit people from downloading the repository via DataLad. Many users may not need DataLad or have familiarity with it. To update ACLs to share data with users outside of account:
+To update Access Control Lists (ACLs) and allow external users to download data:
 
-1. Go to “Permissions” tab  
-2.  Scroll down to “Access control list (ACL)”  
-3. Click Edit and check the “List” and “Read” boxes for “Authenticated users groups (anyone with an AWS account)” (you may also do this for the “Everyone (public access)” if desired)  
-4. Check “I understand the effects of these changes on my objects and buckets” and “Save changes”
+1. Go to **Permissions** tab  
+2. Scroll down to **Access control list (ACL)**
+3. Click **Edit** and check the **List** and **Read** boxes for: 
+    - **Authenticated users groups** (anyone with an AWS account)
+    - (Optional) **Everyone (public access)** if broader access is desired.  
+4. Check **I understand the effects of these changes on my objects and buckets**
+5. Click **Save changes**.
 
-DataLad download is required however in certain cases, including: (1) users wish to keep a record of data provenance for their personal reference; (2) users plan to download, update, and make their own contributions to the repository (as [BOBS Repository](https://bobsrepository.readthedocs.io/en/latest/contribute/) is set up to accommodate for example).
-
-
-
+### Tracking Repository Usage
+In order to view statistics collected for your repository, Informatics will need to give your IAM account “Storage Lens” permissions. If you are interested in obtaining more detailed information, including the number of people who have viewed and/or downloaded the repository - including anonymous downloads via Cyberduck or web browser - Informatics will create a separate bucket to stash server access logs that contain more detailed information (see [Enabling Amazon S3 server access logging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html)). Note that it takes up to 48 hours to populate with logging data. 
 
 ## Additional Resources
 [AWS Samples](https://github.com/aws-samples/)  
