@@ -1,6 +1,6 @@
 # Integration With OpenNeuro
 
-The steps below are derived from the documentation for OpenNeuro Documentation [here](https://docs.openneuro.org/#openneuro-documentation) - please see this page for further details.
+The steps below are derived from the documentation for OpenNeuro Documentation [here](https://docs.openneuro.org/#openneuro-documentation) - please see this page for further details. Note that these steps do not need to be performed separately from the intitial [DataLad setup and configuration](datalad-init.md), but the OpenNeuro interface is still under development, so we recommend following those steps first to ensure that the basic setup is correct before proceeding with configuring OpenNeuro as a GitHub sibling or special remote.
 
 ## Configure credentials
 
@@ -16,7 +16,7 @@ deno run -A jsr:@openneuro/cli login --error-reporting true
 ```
 
 ## Add OpenNeuro as a GitHub Sibling
-Setting up OpenNeuro as a special remote is not necessary, instead you can push changes via git via the command below (replacing [`https://openneuro.org/datasets/ds005450`](https://openneuro.org/datasets/ds005450), which is the location of BOBSRepository on OpenNeuro, with the location of your repository). 
+Setting up OpenNeuro as a special remote is not necessary, instead you can push changes via git via the command below (replacing [`https://openneuro.org/datasets/ds005450`](https://openneuro.org/datasets/ds005450), which is the location of BOBSRepository on OpenNeuro, with the location of your repository). During this stage of development, we contacted the OpenNeuro team directly to create a repository for us first that we then add, but that may not be necessary in the future. In addition, there should be support for creating snapshots of sparse datasets from the web UI in the near future.
 
 ```bash
 $ datalad siblings add --url https://openneuro.org/git/0/ds005450

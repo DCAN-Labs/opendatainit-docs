@@ -6,6 +6,7 @@ Welcome to the Docs site for setting up a repository via the Masonic Institute f
 (2) Making the data repository publicly available via **Amazon AWS** and **OpenNeuro**        
 
 ## General Requirements
+- **Make sure that the data folder is located on MSI tier1 storage**: see [NOTE: For Small Data Repositories Only](datalad-init.md#note-for-small-data-repositories-only) for details
 - **[De-identification and permission to share publicly](dataprep.md#de-identification-and-permission-to-share-publicly)**        
 - **[Format data according to BIDS standards](dataprep.md#bids-standard)**        
 - **Amazon AWS: Review [Open Data Registry contribution & community guidelines](https://github.com/awslabs/open-data-registry/blob/main/CONTRIBUTING.md):**        

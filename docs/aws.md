@@ -33,7 +33,7 @@ Within the YAML file (under `DataAtWork` > `Tutorials`), you are required to pro
 Submit a PR to the central repository and inform the Informatics Hub. Informatics will contact Amazon to link the repository with the MIDB account (Step 4 in the [AWS Handbook](https://assets.opendata.aws/aws-onboarding-handbook-for-data-providers-en-US.pdf)), create the S3 bucket referenced in the YAML (assuming it is available), and inform Amazon that the necessary steps to merge the PR have been completed. Once merged (this may take a few days), you will be provided with AWS credentials for read/write access to the bucket and you can proceed to upload your data! 
 
 ### Step 5: AWS Bucket Configuration
-Informatics will handle the majority of the configurations required to make the bucket publicly available, but there may be additional features you wish to employ that require access to the AWS web console. You can either request Informatics (the "root" user) to make these updates for you or ask that they add you as an [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) to access the web console directly to make changes. The following are recommended configurations to ensure public accessibility and allow tracking for repository usage:
+The Informatics Hub can will handle the majority of the configurations required to make the bucket publicly available, but there may be additional features you wish to employ that require access to the AWS web console. You can either request Informatics (the "root" user) to make these updates for you or ask that they add you as an [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) to access the web console directly to make changes. The following are recommended configurations to ensure public accessibility and allow tracking for repository usage:
 
 #### Enable ACLs Under Object Ownership
 Though Amazon generally recommends using a bucket policy instead, our current process requires that **ACLs enabled** be checked under **Object Ownership**:
@@ -54,7 +54,12 @@ To update Access Control Lists (ACLs) and allow external users to download data:
 5. Click **Save changes**.
 
 #### Tracking Repository Usage
-In order to view statistics collected for your repository, Informatics will need to give your IAM account “Storage Lens” permissions. If you are interested in obtaining more detailed information, including the number of people who have viewed and/or downloaded the repository - including anonymous downloads via Cyberduck or web browser - Informatics will create a separate bucket to stash server access logs that contain more detailed information (see [Enabling Amazon S3 server access logging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html)). Note that it takes up to 48 hours to populate with logging data. 
+In order to view statistics collected for your repository, the Informatics Hub will need to give your IAM account “Storage Lens” permissions. 
+
+If you are interested in obtaining more detailed information, including the number of people who have viewed and/or downloaded the repository - including anonymous downloads via Cyberduck or web browser - Informatics will create a separate bucket to stash server access logs that contain more detailed information (see [Enabling Amazon S3 server access logging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html)). Note that it takes up to 48 hours to populate with logging data. 
+
+AWS S3 Server Access Logs: If enabled, these logs capture every request made to your bucket, including GET requests (downloads).
+You can analyze these logs using AWS Athena or other log-parsing tools to count download events.
 
 ## Additional Resources
 [AWS Onboarding Handbook for Data Providers](https://assets.opendata.aws/aws-onboarding-handbook-for-data-providers-en-US.pdf)      
