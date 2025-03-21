@@ -54,12 +54,11 @@ To update Access Control Lists (ACLs) and allow external users to download data:
 5. Click **Save changes**.
 
 #### Tracking Repository Usage
-In order to view statistics collected for your repository, the Informatics Hub will need to give your IAM account “Storage Lens” permissions. 
+To track the number of repository downloads, you can parse [server access logs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerLogs.html), which provide detailed records for all requests made to a bucket. You will first need to ask the Informatics Hub to enable AWS S3 server access logging - see instructions and details under [Enabling Amazon S3 server access logging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html). Informatics will create a separate bucket to stash the logs. They will then need to update the permissions appropriately (see [Permissions for log delivery](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html#grant-log-delivery-permissions-general))
 
-If you are interested in obtaining more detailed information, including the number of people who have viewed and/or downloaded the repository - including anonymous downloads via Cyberduck or web browser - Informatics will create a separate bucket to stash server access logs that contain more detailed information (see [Enabling Amazon S3 server access logging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html)). Note that it takes up to 48 hours to populate with logging data. 
+Server access logging captures every request made to your bucket, including GET requests (downloads). Note that it takes up to 48 hours to populate with logging data. Once logs are available, download them locally in order to parse them.
 
-AWS S3 Server Access Logs: If enabled, these logs capture every request made to your bucket, including GET requests (downloads).
-You can analyze these logs using AWS Athena or other log-parsing tools to count download events.
+- track # of people who view/download repo? can it also detect downloads via Cyberduck or web browser? 
 
 ## Additional Resources
 [AWS Onboarding Handbook for Data Providers](https://assets.opendata.aws/aws-onboarding-handbook-for-data-providers-en-US.pdf)      
