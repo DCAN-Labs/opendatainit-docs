@@ -14,6 +14,7 @@ docs_dir: docs
 nav:
   - About: index.md
   - Create AWS S3 Bucket: aws.md
+  - Tracking Repo Usage: access-logging.md
   - "Local Installation/Configuration": installation.md
   - Prepare Data: dataprep.md
   - "Initialize & Configure DataLad": datalad-init.md
