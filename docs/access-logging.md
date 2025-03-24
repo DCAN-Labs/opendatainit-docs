@@ -57,7 +57,12 @@ user_agent version_id host_id signature_version cipher host tls_version access_p
 acl_required
 ```
 
-To parse the logs to get information about number of downloads and views (by unique users) over time, please use the following code:
+To get information about number of downloads (by unique users) over time, the log information we are interested in is:
 
-[UNDER CONSTRUCTION]
+- operation: REST.GET.OBJECT
+- HTTP status: 200 (successful)
+- key: the file being downloaded
+- requester or remote_ip: who downloaded it
+- Date (to track over time)
+
 
