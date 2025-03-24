@@ -73,7 +73,7 @@ df = pd.DataFrame(log_entries)
 
 # Drop duplicates
 df_unique = df.drop_duplicates()
-df_unique.to_csv(f'{output_dir}/full.csv', index=False)
+df_unique.to_csv(f'{output_dir}/REST.GET.OBJECT_all.csv', index=False)
 
 df_successful_downloads = df_unique[df_unique['status'] == 200]
 df_successful_downloads= df_successful_downloads.drop(['operation', 'status'], axis=1)
@@ -98,7 +98,7 @@ downloads_per_week = df_successful_downloads.groupby(pd.Grouper(key='date', freq
 plt.figure(figsize=(10, 6))
 plt.plot(downloads_per_week['date'], downloads_per_week['count'], marker='o', linestyle='-')
 
-plt.title(f'Successful Downloads Per Week ({len(sorted_df)} unique downloads total)')
+plt.title(f'Successful Downloads Per Week {first_date} to {last_date} \n Total # Unique Downloads: {len(sorted_df)}')
 plt.xlabel('Week')
 plt.ylabel('Download Count')
 plt.xticks(rotation=45)
