@@ -82,7 +82,14 @@ df_successful_downloads.to_csv(f'{output_dir}/REST.GET.OBJECT_200.csv', index=Fa
 df_successful_downloads_unique= df_successful_downloads.drop_duplicates('remote_ip')
 df_successful_downloads_unique.to_csv(f'{output_dir}/REST.GET.OBJECT_200_unique.csv', index=False)
 
-print("Log parsing complete")
+# Grab period of time and total unique downloads
+sorted_df = df_successful_downloads_unique.sort_values(by='date')
+first_date= sorted_df.iloc[0]['date']
+last_date=sorted_df.iloc[-1]['date']
+
+print(f"From the period of {first_date} to {last_date}, there were {len(sorted_df)} downloads by unique users.")
+
+
 
 '''
 operations:

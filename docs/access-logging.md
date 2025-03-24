@@ -65,4 +65,8 @@ To get information about number of downloads (by unique users) over time, the lo
 - requester or remote_ip: who downloaded it
 - Date (to track over time)
 
+To parse the logs, use the script [parse_access_logs.py](https://github.com/DCAN-Labs/opendatainit-docs/blob/main/code/parse_access_logs.py). An example usage is:
 
+```bash
+python3 parse_access_logs.py --logdir /path/to/downloaded_aws_logs
+```
