@@ -43,7 +43,7 @@ downloads = defaultdict(lambda: defaultdict(lambda: {'views': 0, 'unique_ips': s
 log_entries = []
 
 # Create directory for parsed logs
-output_dir = 'parsed_logs'
+output_dir = 'parsed_logs_detailed'
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
@@ -55,13 +55,15 @@ for root, _, files in os.walk(log_dir):
                 match = log_pattern.match(line)
                 if match:
                     log = match.groupdict()
-                    if log['operation'] == 'REST.GET.OBJECT' and log['http_status'] == '200':
+                    #if log['operation'] == 'REST.GET.OBJECT' and log['http_status'] == '200':
+                    if log['operation'] == 'REST.GET.OBJECT':
                         log_time = datetime.strptime(log['datetime'], "%d/%b/%Y:%H:%M:%S %z")
                         log_entry = {
                             'date': log_time.date(),
                             'remote_ip': log['remote_ip'],
                             'operation': log['operation'],
-                            'status': int(log['http_status'])
+                            'status': int(log['http_status']),
+                            'bytes': log['bytes_sent']
                         }
                         log_entries.append(log_entry)
                 else:
@@ -71,52 +73,13 @@ for root, _, files in os.walk(log_dir):
 df = pd.DataFrame(log_entries)
 
 # Drop duplicates
-df= df.drop_duplicates()
-df.to_csv(f'{output_dir}/REST.GET.OBJECT_200.csv', index=False)
+df_unique = df.drop_duplicates()
+df_unique.to_csv(f'{output_dir}/REST.GET.OBJECT_all.csv', index=False)
+
+df_successful_downloads = df_unique[df_unique['status'] == 200]
+df_successful_downloads= df_successful_downloads.drop(['operation', 'status'], axis=1)
+df_successful_downloads.to_csv(f'{output_dir}/REST.GET.OBJECT_200.csv', index=False)
 
 # Remove IP duplicates across time
-df_unique= df.drop_duplicates('remote_ip')
-df_unique.to_csv(f'{output_dir}/REST.GET.OBJECT_200_unique.csv', index=False)
-
-# Grab period of time and total unique downloads
-sorted_df = df_unique.sort_values(by='date')
-first_date= sorted_df.iloc[0]['date']
-last_date=sorted_df.iloc[-1]['date']
-
-# Plot daily downloads
-df['date'] = pd.to_datetime(df['date'])
-downloads_per_week = df.groupby(pd.Grouper(key='date', freq='W')).size().reset_index(name='count')
-
-# Plot line + dots
-plt.figure(figsize=(10, 6))
-plt.plot(downloads_per_week['date'], downloads_per_week['count'], marker='o', linestyle='-')
-
-plt.title(f'Successful Downloads Per Week {first_date} to {last_date} \n Total # Unique Downloads: {len(sorted_df)}')
-plt.xlabel('Week')
-plt.ylabel('Download Count')
-plt.xticks(rotation=45)
-plt.grid(True)
-plt.tight_layout()
-
-fig_path = os.path.join(output_dir, 'downloads_over_time.png')
-plt.savefig(fig_path)
-
-
-
-'''
-operations:
-Operation	Description
-REST.GET.OBJECT	Download an object (GET)
-REST.PUT.OBJECT	Upload an object
-REST.DELETE.OBJECT	Delete an object
-REST.HEAD.OBJECT	Get object metadata
-REST.GET.BUCKET	List bucket contents
-REST.HEAD.BUCKET	Check if bucket exists
-WEBSITE.GET.OBJECT	Request via S3 static website endpoint
-
-
-Errors:
-301 - moved permanently
-401 - invalid credentials
-404 - object not found
-'''
+df_successful_downloads_unique= df_successful_downloads.drop_duplicates('remote_ip')
+df_successful_downloads_unique.to_csv(f'{output_dir}/REST.GET.OBJECT_200_unique.csv', index=False)
