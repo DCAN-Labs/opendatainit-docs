@@ -70,3 +70,5 @@ To parse the logs, use the script [parse_access_logs.py](https://github.com/DCAN
 ```bash
 python3 parse_access_logs.py --logdir /path/to/downloaded_aws_logs
 ```
+
+This script will output csv files in a folder called `parsed_logs`. It will also generate a figure called `downloads_per_week_scatter.png` showing the number of downloads per week.

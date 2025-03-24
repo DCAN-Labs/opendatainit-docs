@@ -4,6 +4,7 @@ import argparse
 from datetime import datetime
 from collections import defaultdict
 import pandas as pd
+import matplotlib.pyplot as plt
 
 log_pattern = re.compile(r'''
     (?P<bucket_owner>\S+) \s+
@@ -88,6 +89,24 @@ first_date= sorted_df.iloc[0]['date']
 last_date=sorted_df.iloc[-1]['date']
 
 print(f"From the period of {first_date} to {last_date}, there were {len(sorted_df)} downloads by unique users.")
+
+# Plot daily downloads
+df_successful_downloads['date'] = pd.to_datetime(df_successful_downloads['date'])
+downloads_per_week = df_successful_downloads.groupby(pd.Grouper(key='date', freq='W')).size().reset_index(name='count')
+
+# Plot line + dots
+plt.figure(figsize=(10, 6))
+plt.plot(downloads_per_week['date'], downloads_per_week['count'], marker='o', linestyle='-')
+
+plt.title(f'Successful Downloads Per Week ({len(sorted_df)} unique downloads total)')
+plt.xlabel('Week')
+plt.ylabel('Download Count')
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.tight_layout()
+
+fig_path = os.path.join(output_dir, 'downloads_per_week_scatter.png')
+plt.savefig(fig_path)
 
 
 
