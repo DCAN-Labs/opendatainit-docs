@@ -71,4 +71,6 @@ To parse the logs, use the script [parse_access_logs.py](https://github.com/DCAN
 python3 parse_access_logs.py --logdir /path/to/downloaded_aws_logs
 ```
 
-This script will output csv files in a folder called `parsed_logs` with the number of successful downloads over time (`REST.GET.OBJECT_200.csv`) and successful downloads over time by unique users based on IP address (`REST.GET.OBJECT_200_unique.csv`). It will also generate a figure called `downloads_over_time.png` showing the number of downloads per week, wiith the total number of unique downloads over time listed in the title.
+This script will output csv files in a folder called `parsed_logs` with the number of successful downloads over time (`parsed_output.csv`) and successful downloads over time by unique users based on IP address, with potential bot activity filtered (`parsed_output_filt.csv`). It will also generate a figure called `downloads_over_time.png` from the latter csv file, which shows the number of downloads per week with the total number of unique downloads over time listed in the title:
+
+![downloads_over_time](images/downloads_over_time.png)

@@ -5,6 +5,7 @@ from datetime import datetime
 from collections import defaultdict
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 
 log_pattern = re.compile(r'''
     (?P<bucket_owner>\S+) \s+
@@ -72,6 +73,7 @@ for root, _, files in os.walk(log_dir):
 
 # Create pandas DataFrame
 df = pd.DataFrame(log_entries)
+df.to_csv(f'{output_dir}/parsed_output.csv', index=False)
 
 # Remove rows with missing object size or bytes sent
 df = df[
@@ -79,13 +81,9 @@ df = df[
     (df['bytes'] != '-')  
 ]
 
-# Drop duplicates
+# Drop duplicates & remove IP duplicates across time (note that this will remove downloads from the same IP on different days)
 df= df.drop_duplicates()
-df.to_csv(f'{output_dir}/REST.GET.OBJECT_200.csv', index=False)
-
-# Remove IP duplicates across time
 df_unique= df.drop_duplicates('remote_ip')
-df_unique.to_csv(f'{output_dir}/REST.GET.OBJECT_200_unique.csv', index=False)
 
 # Filter likely bots
 bot_keywords = ['bot', 'crawl']
@@ -96,6 +94,9 @@ sorted_df = df_bots_filt.sort_values(by='date')
 first_date= sorted_df.iloc[0]['date']
 last_date=sorted_df.iloc[-1]['date']
 
+# Save filtered data
+df_unique.to_csv(f'{output_dir}/parsed_output_filt.csv', index=False)
+
 # Plot daily downloads
 df_bots_filt['date'] = pd.to_datetime(df_bots_filt['date'])
 downloads_per_week = df_bots_filt.groupby(pd.Grouper(key='date', freq='W')).size().reset_index(name='count')
@@ -104,11 +105,12 @@ downloads_per_week = df_bots_filt.groupby(pd.Grouper(key='date', freq='W')).size
 plt.figure(figsize=(10, 6))
 plt.plot(downloads_per_week['date'], downloads_per_week['count'], marker='o', linestyle='-')
 
-plt.title(f'Successful Downloads Per Week {first_date} to {last_date} \n Total # Unique Downloads: {len(sorted_df)}')
-plt.xlabel('Week')
+plt.title(f'Successful Downloads Per Week By Unique Users {first_date} to {last_date} \n Total # Downloads: {len(sorted_df)}')
+plt.xlabel('Date')
 plt.ylabel('Download Count')
 plt.xticks(rotation=45)
 plt.grid(True)
+plt.gca().yaxis.set_major_locator(MaxNLocator(integer=True)) # Force y-axis to be integers
 plt.tight_layout()
 
 fig_path = os.path.join(output_dir, 'downloads_over_time.png')
