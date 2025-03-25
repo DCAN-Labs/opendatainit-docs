@@ -61,7 +61,10 @@ for root, _, files in os.walk(log_dir):
                             'date': log_time.date(),
                             'remote_ip': log['remote_ip'],
                             'operation': log['operation'],
-                            'status': int(log['http_status'])
+                            'status': int(log['http_status']),
+                            'bytes': log['bytes_sent'],                           
+                            'user_agent': log['user_agent'],
+                            'object_size': log['object_size']
                         }
                         log_entries.append(log_entry)
                 else:
@@ -69,6 +72,12 @@ for root, _, files in os.walk(log_dir):
 
 # Create pandas DataFrame
 df = pd.DataFrame(log_entries)
+
+# Remove rows with missing object size or bytes sent
+df = df[
+    (df['object_size'] != '-') &
+    (df['bytes'] != '-')  
+]
 
 # Drop duplicates
 df= df.drop_duplicates()
@@ -78,14 +87,18 @@ df.to_csv(f'{output_dir}/REST.GET.OBJECT_200.csv', index=False)
 df_unique= df.drop_duplicates('remote_ip')
 df_unique.to_csv(f'{output_dir}/REST.GET.OBJECT_200_unique.csv', index=False)
 
+# Filter likely bots
+bot_keywords = ['bot', 'crawl']
+df_bots_filt = df_unique[~df_unique['user_agent'].str.lower().str.contains('|'.join(bot_keywords))]
+
 # Grab period of time and total unique downloads
-sorted_df = df_unique.sort_values(by='date')
+sorted_df = df_bots_filt.sort_values(by='date')
 first_date= sorted_df.iloc[0]['date']
 last_date=sorted_df.iloc[-1]['date']
 
 # Plot daily downloads
-df['date'] = pd.to_datetime(df['date'])
-downloads_per_week = df.groupby(pd.Grouper(key='date', freq='W')).size().reset_index(name='count')
+df_bots_filt['date'] = pd.to_datetime(df_bots_filt['date'])
+downloads_per_week = df_bots_filt.groupby(pd.Grouper(key='date', freq='W')).size().reset_index(name='count')
 
 # Plot line + dots
 plt.figure(figsize=(10, 6))
