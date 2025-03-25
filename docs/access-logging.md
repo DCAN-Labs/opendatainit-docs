@@ -1,5 +1,4 @@
-# Tracking Repository Usage: Server Access Logging
-
+# Tracking Repo Usage: Server Access Logging
 To track the number of repository downloads, views, and other information, you can parse [server access logs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerLogs.html), which provide detailed records for all requests made to a bucket. 
 
 ## Bucket Configuration
@@ -22,11 +21,8 @@ At minimum, the permissions for your IAM user or role should include the followi
   
 Server access logging captures every request made to your bucket, including GET requests (downloads). Note that it takes up to 48 hours to populate with logging data. 
 
-## Downloading Logs
-Once logs are available, download them locally in order to parse them.
-
-### Install & Configure AWS CLI
-Install the AWS CLI to download logs from the command line (see full instructions [here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)). After confirming successful installation, run `aws configure` to configure with your IAM user credentials - you will be prompted for your Access Key ID, Secret Access Key), Region (e.g., us-east-2), and Output format (e.g., json).
+## Install AWS CLI
+Install the AWS CLI to download logs from the command line (see full instructions [here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)) and confirm successful installation:
 
 *For Mac users:*
 ```bash
@@ -36,14 +32,25 @@ sudo installer -pkg AWSCLIV2.pkg -target /
 # Verify the installation
 which aws
 aws --version
-
-# Configure CLI
-aws configure
 ```
 
-### Download Logs
-Download the folder, eg:
+## Downloading Logs
+Once logs are available, download them locally in order to parse them.
+
+### Option 1 - Use Download Script [*Recommended*]
+Use the script [download_logs.sh](https://github.com/DCAN-Labs/opendatainit-docs/blob/main/code/download_logs.py). This script will prompt you for your credentials and download logs from the specified bucket and save them to a local directory (`./downloaded_logs`). This script is useful as it will skip any folders that have already been downloaded, and will only download new logs:
+
 ```bash
+python3 download_logs.py --bucket bobsrepository-logs
+```
+
+### Option 2 - Use CLI Via Command Line
+Alternatively, you can simply run `aws configure` to configure with your IAM user credentials - you will be prompted for your Access Key ID, Secret Access Key), Region (e.g., us-east-2), and Output format (e.g., json) - followed by `aws s3 cp` to copy the logs to a local directory:
+```bash
+# Configure AWS CLI
+aws configure
+
+# Copy logs to local directory
 aws s3 cp s3://bobsrepository-logs/ ./logs/ --recursive
 ```
 
