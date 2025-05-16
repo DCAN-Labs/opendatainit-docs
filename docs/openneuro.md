@@ -6,7 +6,7 @@ The steps below are derived from the documentation for OpenNeuro Documentation [
 
 - If you haven't already, create an account on [OpenNeuro](https://openneuro.org/) using your UMN email
 - Generate an API key at [https://openneuro.org/keygen](https://openneuro.org/keygen) - save this somewhere private
-- Run `deno run -A jsr:@openneuro/cli login to configure credentials`. This prompts you for the required configuration fields and these are saved in Deno’s local storage. Choose openneuro instance when uploading to public data repo hosted on OpenNeuro
+- Run `deno run -A jsr:@openneuro/cli login` to configure credentials. This prompts you for the required configuration fields and these are saved in Deno’s local storage. Choose openneuro instance when uploading to public data repo hosted on OpenNeuro
 
 OR specify as environment variable:
 
