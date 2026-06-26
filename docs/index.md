@@ -1,17 +1,14 @@
 # MIDB Open Data Initiative: Internal SOPs for Setting Up New Repositories
 
-Welcome to the Docs site for setting up a repository via the Masonic Institute for the Developing Brain (MIDB) Open Data Initiative! This initiative links S3 storage, DataLad for version control, and Amazon AWS and OpenNeuro platforms for public access. This documentation is provided to guide internal MIDB users in setting up an open data repository via MIDB. Using the [BOBS Repository](https://bobsrepository.readthedocs.io) as an example use case, it covers:
+Welcome to the Docs site for setting up a repository via the Masonic Institute for the Developing Brain (MIDB) Open Data Initiative! This initiative links S3 storage, DataLad for version control, and Amazon AWS and OpenNeuro platforms for public access. Data are hosted via the Amazon Web Services (AWS) [Open Data Sponsorship Program](https://aws.amazon.com/opendata/open-data-sponsorship-program/). The Amazon Simple Storage Service, or simply [Amazon S3](https://aws.amazon.com/s3/), allows data storage for public distribution, management, and tracking. 
+
+This documentation is provided to guide MIDB users in setting up an open data repository via MIDB. Using the [BOBS Repository](https://bobsrepository.readthedocs.io) as an example use case, it covers:
 
 (1) Setting up DataLad repository for versioning and tracking of data provenance        
 (2) Making the data repository publicly available via **Amazon AWS** and **OpenNeuro**        
 
-## General Requirements
-- **Make sure that the data folder is located on MSI tier1 storage**: see [NOTE: For Small Data Repositories Only](datalad-init.md#note-for-small-data-repositories-only) for details
-- **[De-identification and permission to share publicly](dataprep.md#de-identification-and-permission-to-share-publicly)**        
-- **[Format data according to BIDS standards](dataprep.md#bids-standard)**        
-- **Amazon AWS: Review [Open Data Registry contribution & community guidelines](https://github.com/awslabs/open-data-registry/blob/main/CONTRIBUTING.md):**        
-> *The goal of this registry is to expand access to useful data available on AWS. With that in mind, we prefer to list datasets that are clearly documented, are actively supported, can be used for research or educational purposes, and are optimized for analysis using AWS tools. Datasets are included at the discretion of the AWS Open Data team, which may remove datasets from the registry at any time. Data providers are responsible for maintaining and supporting the data that they share.*     
-> *For more guidance on how to contribute to this registry and what kinds of data are suitable for sharing, please review the [Amazon Open Source Code of Conduct](https://aws.github.io/code-of-conduct) and [AWS Acceptable Use Policy](https://aws.amazon.com/aup/).*
+
+**NOTE: Please review the [Open Data Registry contribution & community guidelines](https://github.com/awslabs/open-data-registry/blob/main/CONTRIBUTING.md)**        
 
 ## Checklist
 

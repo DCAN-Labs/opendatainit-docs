@@ -1,17 +1,12 @@
-# Create Amazon AWS S3 Bucket
+# Step 2: Create Amazon AWS S3 Bucket
 
-## Overview
-The Amazon Simple Storage Service, or simply [Amazon S3](https://aws.amazon.com/s3/), allows data storage for public distribution, management, and tracking. This has several advantages over using private S3 bucket for data repository storage and sharing, including robust and well-supported utilities for tracking statistics and scalability. 
+Below are steps to setting up a new Amazon AWS S3 bucket. In summary, you create a fork of the AWS [open-data-registry](https://github.com/awslabs/open-data-registry) repository on Github, add a configuration file for your repository to [`datasets/`](https://github.com/awslabs/open-data-registry/tree/main/datasets), and submit a pull request (PR) for Amazon to review. **We walk through these steps in detail below,** but the full documentation for submitting a new repository is available in the open-data-registry [README](https://github.com/DCAN-Labs/open-data-registry?tab=readme-ov-file#registry-of-open-data-on-aws) and [Onboarding Handbook for Data Providers](https://assets.opendata.aws/aws-onboarding-handbook-for-data-providers-en-US.pdf) (starting at Step 5: Preparing & uploading data).
 
-The MIDB Open Data Initiative hosts data on AWS via the Amazon Web Services (AWS) [Open Data Sponsorship Program](https://aws.amazon.com/opendata/open-data-sponsorship-program/). In summary, the process involves creating a fork of the AWS [open-data-registry](https://github.com/awslabs/open-data-registry) repository on Github, adding a `YAML` configuration file for your data repository to [`datasets/`](https://github.com/awslabs/open-data-registry/tree/main/datasets), and submitting a pull request (PR) for Amazon to review. Please review the open-data-registry [README](https://github.com/DCAN-Labs/open-data-registry?tab=readme-ov-file#registry-of-open-data-on-aws) and [Onboarding Handbook for Data Providers](https://assets.opendata.aws/aws-onboarding-handbook-for-data-providers-en-US.pdf) (starting at Step 5: Preparing & uploading data) for details.
+## Link to MIDB Account
 
-## How to Create Amazon AWS S3 Bucket
-### Step 1: Link to MIDB Account
-To get started, please contact the Informatics Hub (see details in internal documentation [here](https://docs.google.com/document/d/1qEC6YwhW-kik2z1EZAlhhUgNSrgH9XlweW-avR00Yls/edit?usp=sharing)) to link the impending repository to MIDB. 
+All data MIDB ODI repositories live under the MIDB departmental AWS account managed by the Informatics Hub. Please contact Lucille Moore, who can facilitate connecting you with the Informatics Hub to initiate the process of requesting a new data repository setup, i.e. a new S3 bucket on Amazon AWS.
 
-You should also decide on the short name you would like to use for your repository (e.g. the short name for the Baby Open Brain (BOBs) Repository is `bobsrepository`). We recommend using the short name consistently when setting up the repository, including the YAML file name, DataLad folder name, etc. 
-
-### Step 2: Create YAML File
+### Create YAML File
 A fork of the [open-data-registry](https://github.com/awslabs/open-data-registry) repository for registry of open data on AWS exists under the DCAN-Labs GitHub organization [here](https://github.com/DCAN-Labs/open-data-registry). Select **Sync fork** to make sure it is up-to-date.
 
 Next add a new YAML file named with the short name of your repository to the `/datasets` folder (see the template README provided [here](https://github.com/awslabs/open-data-registry?tab=readme-ov-file#how-are-datasets-added-to-the-registry)). We recommend making a copy of the [BOBs Repository YAML](https://github.com/LuciMoore/open-data-registry/blob/main/datasets/bobsrepository.yaml) and updating the fields with information pertaining to the data repository you are submitting. Some additional field recommendations include:  
