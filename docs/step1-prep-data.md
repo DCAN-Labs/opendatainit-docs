@@ -1,5 +1,5 @@
 > **⚠️ WARNING**
-> The current workflow is for smaller datasets only - [see details](datalad-init.md#note-for-small-data-repositories-only). Will be adapated for larger datasets stored in MSI S3 buckets in the future
+> The current workflow is for smaller datasets only - [see details](datalad-init.md#note-for-small-data-repositories-only). The workflow will be adapted for larger datasets stored in MSI S3 buckets in the future
 
 # Step 1: Data Preparation & General Requirements
 
