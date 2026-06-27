@@ -2,39 +2,34 @@
 
 Below are steps to setting up a new Amazon AWS S3 bucket. In summary, you create a fork of the AWS [open-data-registry](https://github.com/awslabs/open-data-registry) repository on Github, add a configuration file for your repository to [`datasets/`](https://github.com/awslabs/open-data-registry/tree/main/datasets), and submit a pull request (PR) for Amazon to review. 
 
-## Step 2.1 Link to MIDB Account
+## Link to MIDB Account
 
 All data MIDB ODI repositories live under the MIDB departmental AWS account managed by the Informatics Hub. Please contact Lucille Moore, who can facilitate connecting you with the Informatics Hub to initiate the process of requesting a new data repository setup, i.e. a new S3 bucket on Amazon AWS.
 
-## Step 2.2 Update DCAN-Labs Repository Fork 
+## Update DCAN-Labs Fork 
 
 The registry of open data is located in the [open-data-registry](https://github.com/awslabs/open-data-registry) repository. A forked version under DCAN-Labs is [here](https://github.com/DCAN-Labs/open-data-registry); select **Sync fork** to update.
 
-### Step 2.1.1 Add New YAML File
+### Add New YAML File
 You will need to add a new YAML file to this repository under `/datasets` using the standard name you decided on for the project. To get started, we recommend making a copy of the make a copy of [BOBs Repository YAML](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml) and updating with information for your own repo. There is also an [example YAML](https://github.com/awslabs/open-data-registry#how-are-datasets-added-to-the-registry) provided in the repository README.
 
 **Tips for constructing YAML file using [BOBs Repository YAML](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml) as the template:**
 
- - `ManagedBy` - do not modify value
- - `Resources`:  
-    - `Region` and `Type`: do not modify values
-    -  `ARN` and `Explore`: replace `bobsrepository` with your repository name
+ - Do not modify values for: `ManagedBy`, `Region` (`Resources`), or `Type` (`Resources`)
+ - For `Resources` > `ARN` and `Explore`: replace `bobsrepository` with your repository name
  - `License` - adding a license is recommended, otherwise can leave blank or follow the README example (`There are no restrictions on the use of this data`)
- - Follow standard [YAML formatting](https://stackoverflow.com/a/22235064) rules to avoid errors:
-    - Use quotation marks for string values that include special characters, e.g., **`:`, `{`, `}`, `[`, `]`, `,`, `&`, `*`, `#`, `?`, `|`, `-`, `<`, `>`, `=`, `!`, `%`, `@`, `\`**
-    - Include quotations when in doubt
-    - Formatting errors will also be caught during continuous integration (CI) after submitting your pull request and can be fixed easily at that stage.
+ - Follow standard YAML formatting to avoid errors, e.g. use quotation marks for [special characters](https://stackoverflow.com/a/22235064). Include quotations when in doubt. Formatting errors will also be caught during continuous integration (CI) after submitting your pull request and can be fixed easily at that stage.
 
-### Step 2.1.2 Create Tutorial  
+### Create Tutorial  
 Within the YAML file (under `DataAtWork` > `Tutorials`), you are required to provide a link to a “tutorial,” which for a data repository can simply be instructions on how to access and download the data. Some helpful examples include: 
 
 - BOBSRepo - [View or Download the BOBS Repository](https://bobsrepository.readthedocs.io/data_access/) 
 - [INDI tutorial](https://fcon_1000.projects.nitrc.org/indi/s3/index.html) (provides a basic explanation of the data format/organization and how to access via Cyberduck)
 
-## Step 2.2 Submit Pull Request
+## Submit Pull Request
 Once your repository is ready, simply submit a pull request (PR) to the central repository. Also make sure to notify Lucille Moore and the Informatics Hub, who will then coordinate with Amazon to link your repo to the MIDB account. After the PR is merged (this may take a few days), Amazon will create a S3 bucket for you on AWS (named as defined in your YAML file) and send AWS credentials with read/write access to you.
 
-## Step 2.3 (Optional): AWS Bucket Configuration
+## AWS Bucket Configuration (OPTIONAL)
 
 The Informatics Hub will complete most configurations required to make your bucket publicly accessible. However, you may want to enable additional features (e.g., fine-grained permissions or usage tracking) that require access to the AWS web console. To make these changes, you can either request Informatics (the "root" user) to apply them, or ask to be added as an [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) to access the AWS console directly.
 

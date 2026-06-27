@@ -15,9 +15,16 @@ It's important to settle on a repository name early on as the name must be consi
 - **Store a backup of this source folder in an S3 bucket on MSI tier** - 
 This folder will be converted to a DataLad repository that will serve as the source data for shared data. Sometimes DataLad configuration gets messed up and you essentially need to rebuild the repository from scratch, so it's critical that you have a totally separate additional source folder that is never touched that you can always recover from.
 
-## BIDS formatting & validation
+## Add AWS Helper Files
 
-- The entire project folder must follow the [Brain Imaging Data Structure](https://bids-specification.readthedocs.io/en/stable/) standard.  
-- We recommend running BIDS validation to be thorough (e.g. the standard [BIDS Validator](https://bids-standard.github.io/bids-validator/)).
-- All validation `ERRORS` must be addressed. In contrast, `WARNINGS` are suggestions and not requirements to pass BIDS validation.
-- If there are files in your project folder that violate BIDS validation, but are necessary to include, add them to a `.bidsignore` file.
+#### Zip Files for Quick Download
+We recommend including a zip file that contains the full contents of the BIDS repository. This should only contain the files/folders relevant to the BIDS repository and can exclude files like `.bidsignore` and `.gitignore`. This file enables users to quickly download the entire contents of the repository as a zip file via their browser by simply clicking on a link.
+
+#### Add `index.html` file
+This file is the interface for the repository on Amazon AWS. For instance, the BOBSRepository AWS page is here: [https://bobsrepository.s3.amazonaws.com/index.html](https://bobsrepository.s3.amazonaws.com/index.html). It allows you to browse the contents of the repo and also download the full contents via the **Download Entire Repository** button at the bottom of the page (which links to the zip file). See the source file for this `index.html` file [here](https://github.com/DCAN-Labs/bobsrepository/blob/main/index.html).
+
+## BIDS formatting & validation
+The entire project folder must follow the [Brain Imaging Data Structure](https://bids-specification.readthedocs.io/en/stable/) standard. Add any non-BIDS files to a `.bidsignore` file, **including the `index.html` and zip files mentioned in the prior step.**
+
+We recommend running BIDS validation (e.g. the standard [BIDS Validator](https://bids-standard.github.io/bids-validator/)). Be sure to address all `ERRORS` to ensure BIDS compliance (note that `WARNINGS` are suggestions, not requirements, so may safely be ignored if not applicable to your data).
+
