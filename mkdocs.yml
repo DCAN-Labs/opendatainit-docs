@@ -27,4 +27,5 @@ nav:
   - "Initialize & Configure DataLad": datalad-init.md
   - OpenNeuro Integration: openneuro.md
   - Maintenance: maintenance.md
+  - Checklist: checklist.md
       

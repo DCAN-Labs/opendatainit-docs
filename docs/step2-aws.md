@@ -1,15 +1,23 @@
 # Step 2: Create Amazon AWS S3 Bucket
 
-Below are steps to setting up a new Amazon AWS S3 bucket. In summary, you create a fork of the AWS [open-data-registry](https://github.com/awslabs/open-data-registry) repository on Github, add a configuration file for your repository to [`datasets/`](https://github.com/awslabs/open-data-registry/tree/main/datasets), and submit a pull request (PR) for Amazon to review. **We walk through these steps in detail below,** but the full documentation for submitting a new repository is available in the open-data-registry [README](https://github.com/DCAN-Labs/open-data-registry?tab=readme-ov-file#registry-of-open-data-on-aws) and [Onboarding Handbook for Data Providers](https://assets.opendata.aws/aws-onboarding-handbook-for-data-providers-en-US.pdf) (starting at Step 5: Preparing & uploading data).
+Below are steps to setting up a new Amazon AWS S3 bucket. In summary, you create a fork of the AWS [open-data-registry](https://github.com/awslabs/open-data-registry) repository on Github, add a configuration file for your repository to [`datasets/`](https://github.com/awslabs/open-data-registry/tree/main/datasets), and submit a pull request (PR) for Amazon to review. 
+
+**Additional Resources**
+
+- [open-data-registry](https://github.com/DCAN-Labs/open-data-registry?tab=readme-ov-file#registry-of-open-data-on-aws)
+- [Onboarding Handbook for Data Providers](https://assets.opendata.aws/aws-onboarding-handbook-for-data-providers-en-US.pdf) (starting at Step 5: Preparing & uploading data)
 
 ## Link to MIDB Account
 
 All data MIDB ODI repositories live under the MIDB departmental AWS account managed by the Informatics Hub. Please contact Lucille Moore, who can facilitate connecting you with the Informatics Hub to initiate the process of requesting a new data repository setup, i.e. a new S3 bucket on Amazon AWS.
 
-### Create YAML File
-A fork of the [open-data-registry](https://github.com/awslabs/open-data-registry) repository for registry of open data on AWS exists under the DCAN-Labs GitHub organization [here](https://github.com/DCAN-Labs/open-data-registry). Select **Sync fork** to make sure it is up-to-date.
+## Update DCAN-Labs Repository Fork 
 
-Next add a new YAML file named with the short name of your repository to the `/datasets` folder (see the template README provided [here](https://github.com/awslabs/open-data-registry?tab=readme-ov-file#how-are-datasets-added-to-the-registry)). We recommend making a copy of the [BOBs Repository YAML](https://github.com/LuciMoore/open-data-registry/blob/main/datasets/bobsrepository.yaml) and updating the fields with information pertaining to the data repository you are submitting. Some additional field recommendations include:  
+The registry of open data is located in the [open-data-registry](https://github.com/awslabs/open-data-registry) repository. A forked version under DCAN-Labs is [here](https://github.com/DCAN-Labs/open-data-registry); select **Sync fork** to update.
+
+You will need to add a new YAML file to this repository under `/datasets` using the standard name you decided on for the project. Instructions for how to generate this file are provided in the repository README, but you can also just make a copy of the [BOBs Repository YAML](https://github.com/LuciMoore/open-data-registry/blob/main/datasets/bobsrepository.yaml) and update the fields as needed.
+
+Some additional field recommendations include:  
 
 * Leave the attribute values for `ManagedBy` unchanged  
 * Under `Resources`:  
@@ -19,12 +27,12 @@ Next add a new YAML file named with the short name of your repository to the `/d
 
 Finally, rememeber to follow YAML formatting (see quick overview [here](https://stackoverflow.com/a/22235064)), including using quotes for string values that include special characters  **`:`, `{`, `}`, `[`, `]`, `,`, `&`, `*`, `#`, `?`, `|`, `-`, `<`, `>`, `=`, `!`, `%`, `@`, `\`** . Using quotations when they are not necessary will not cause any errors, so feel free to err on the side of caution if unsure. Additionally, formatting errors are caught during continuous integration after submitting your PR, so can easily be fixed at that point.     
 
-*Note that you are welcome to proceed to Step 3 to submit a pull request before you are finished finalizing the YAML file. Just make sure to keep the PR in draft mode until ready for review.*
+<!-- *Note that you are welcome to proceed to Step 3 to submit a pull request before you are finished finalizing the YAML file. Just make sure to keep the PR in draft mode until ready for review.* -->
 
-### Step 3: Create Tutorial  
+## Create Tutorial  
 Within the YAML file (under `DataAtWork` > `Tutorials`), you are required to provide a link to a “tutorial,” which for a data repository can simply be instructions on how to access and download the data. The BOBS Repository YAML currently links to the [View or Download the BOBS Repository](https://bobsrepository.readthedocs.io/en/latest/data_access/) section of the [BOBS Repository Docs page](https://bobsrepository.readthedocs.io/en/latest/), but for the initial submission for review, we created a simple markdown file on a public GitHub repository that, following the layout of the [INDI tutorial](https://fcon_1000.projects.nitrc.org/indi/s3/index.html), provided a basic explanation of the data format/organization and how to access via Cyberduck. 
 
-### Step 4: Submit Pull Request
+### Submit Pull Request
 Submit a PR to the central repository and inform the Informatics Hub. Informatics will contact Amazon to link the repository with the MIDB account (Step 4 in the [AWS Handbook](https://assets.opendata.aws/aws-onboarding-handbook-for-data-providers-en-US.pdf)), create the S3 bucket referenced in the YAML (assuming it is available), and inform Amazon that the necessary steps to merge the PR have been completed. Once merged (this may take a few days), you will be provided with AWS credentials for read/write access to the bucket and you can proceed to upload your data! 
 
 ## AWS Bucket Configuration
