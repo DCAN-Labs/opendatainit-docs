@@ -7,6 +7,7 @@ theme:
 markdown_extensions:
   - toc:
       permalink: '🔗' 
+  - admonition
 
 extra_javascript:
   - js/extra.js
@@ -18,12 +19,21 @@ plugins:
 
 docs_dir: docs
 nav:
-  - About: index.md
-  - Create AWS S3 Bucket: aws.md
-  - Tracking Repo Usage: access-logging.md
-  - "Local Installation/Configuration": installation.md
-  - Prepare Data: dataprep.md
-  - "Initialize & Configure DataLad": datalad-init.md
-  - OpenNeuro Integration: openneuro.md
-  - Maintenance: maintenance.md
+  - About:
+     - MIDB Open Data Initiative: index.md
+  - Step-by-Step Guide:
+      - "Step 1: Prepare Data": sop/prep-data.md 
+      - "Step 2: Create AWS S3 Bucket": sop/aws.md
+      - "Step 3: DataLad": sop/datalad.md
+  - Resources: 
+      - Checklist: helper-files/checklist.md
+      - Resources List: helper-files/resources.md
+  - Appendix:
+      - Tracking Repo Usage: appendix/access-logging.md
+      - OpenNeuro Integration: appendix/openneuro.md
+      - Troubleshooting: appendix/troubleshooting.md
+      - Maintenance: appendix/maintenance.md
+      
+      
+
       
