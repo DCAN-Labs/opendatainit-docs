@@ -29,7 +29,8 @@ Add a new YAML file under `/datasets`. We recommend using the [BOBs Repository Y
 The YAML field `DataAtWork` > `Tutorials` requires a link to a “tutorial." We recommend that, at minimum, this includes documentation on the contents and organization of the dataset (see [BOBSRepository Tutorial](https://bobsrepository.readthedocs.io/data_access/)).
  
 ## 5. Submit Pull Request
-Once these steps are complete, submit a pull request (PR) to the central repository and notify Lucille Moore and/or the Informatics Hub, who will then coordinate with Amazon to link your repository to the MIDB account and fasttrack review/approval. After the PR is merged (this may take a few days), Amazon will create a S3 bucket for you on AWS (named as defined in your YAML file) and send AWS credentials with read/write access to you.
+Once these steps are complete, submit a pull request to the main repository and notify Lucille Moore and the Informatics Hub, who will coordinate with AWS to link your repository to the MIDB account. After the PR is merged (this may take a few days), AWS will create the S3 bucket and Informatics will configure the bucket to give you read/write access.
 
 !!! note "Recommended AWS Bucket Configuration"
     See [appendix](../appendix/aws-bucket-config.md) for recommended AWS bucket configurations.
+
