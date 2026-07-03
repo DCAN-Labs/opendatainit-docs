@@ -20,20 +20,21 @@ plugins:
 docs_dir: docs
 nav:
   - About:
-     - Internal SOP for New Repositories: index.md
+     - MIDB Open Data Initiative: index.md
   - Step-by-Step Guide:
       - "Step 1: Prepare Data": sop/prep-data.md 
       - "Step 2: Create AWS S3 Bucket": sop/aws.md
       - "Step 3: DataLad": sop/datalad.md
-  - Checklist: checklist.md
+  - Resources: helper-files/resources.md
+  - Checklist: helper-files/checklist.md
   - Appendix:
       - AWS Bucket Configuration: appendix/aws-bucket-config.md
       - Conda Environment Configuration: appendix/conda-env-config.md
       - Tracking Repo Usage: appendix/access-logging.md
-
-  - OLD PAGES UNDER REVIEW:
-      - DRAFT CONTENT: EXTRA.md
-      - OpenNeuro Integration: openneuro.md
-      - Maintenance: maintenance.md
+      - OpenNeuro Integration: appendix/openneuro.md
+      - Troubleshooting: appendix/troubleshooting.md
+      - Maintenance: appendix/maintenance.md
+      
+      
 
       

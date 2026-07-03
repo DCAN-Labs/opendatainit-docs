@@ -20,7 +20,7 @@ conda activate datalad
 ```
 
 !!! warning "Warning: Conda Environments"
-    You may need to set up your own conda environment in the event that the central CDNI environment is not configured correctly, as there are strict version requirements due to the special use cases employed for DataLad in this workflow. See the [Appendix](../appendix/conda-env_setup.md) for details.
+    You may need to set up your own conda environment in the event that the central CDNI environment is not configured correctly, as there are strict version requirements due to the special use cases employed for DataLad in this workflow. See the [Appendix](../appendix/conda-env-config.md) for details.
 
 ### Set Environmental Variables
 Once your AWS S3 bucket is generated ([Step 2](aws.md)), AWS access and secret keys will be provided to you by the Informatics Hub. **Note that these credentials are distinct from your MSI credentials and are required for using Amazon AWS as a special remote.** 
@@ -59,6 +59,8 @@ $ datalad siblings
 .: aws(+) [git]
 .: github(-) [https://github.com/DCAN-Labs/bobsrepository.git (git)]
 ```
+
+
 ### Add Amazon S3 as Special Remote
 Documentation on how to add Amazon AWS as a special remote can be found in the DataLad Handbook [here](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#).
 
@@ -85,23 +87,6 @@ datalad push --to github
 
 You should now be able to see the updated files on S3 and symlinks in Github (these are not the files, but rather symbolic links to annexed data on the S3 remote).
 
----
-
-## Starting Over
-This should be avoided of course, but if you need to delete your repository and remake it due to errors in configuration that can't be resolved, remember to delete all of the following (DO NOT DELETE SOURCE DATA!):
-
-- GitHub repo - do not create a new one after deleting: this will be done automatically as part of the configuration process
-- DataLad repository on MSI/local (if you get permission denied, change permissions and then delete)
-- Amazon AWS contents 
-
----
-
-## Resources
-**DataLad Handbook:**   
-[8.4 Walk-through: Amazon S3 as a special remote](https://handbook.datalad.org/en/latest/basics/101-139-s3.html)  
-[8.4.6 Advanced Examples](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#advanced-examples)    
-[Basic Principles: Data Nesting](https://3.basecamp.com/5032058/buckets/32547817/todos/7776568105)
-    
 
 
 
