@@ -1,15 +1,17 @@
 # MIDB Open Data Initiative
 
-## Adding A New Repository: Internal SOPs
-
 Welcome to the Docs site for setting up a repository via the Masonic Institute for the Developing Brain (MIDB) Open Data Initiative! This initiative links S3 storage, DataLad for version control, and Amazon AWS and OpenNeuro platforms for public access. Data are hosted via the Amazon Web Services (AWS) [Open Data Sponsorship Program](https://aws.amazon.com/opendata/open-data-sponsorship-program/). The Amazon Simple Storage Service, or simply [Amazon S3](https://aws.amazon.com/s3/), allows data storage for public distribution, management, and tracking. 
+
+---
+
+## Adding A New Repository: Internal SOPs
 
 This documentation is provided to guide MIDB users in setting up an open data repository via MIDB. Using the [BOBS Repository](https://bobsrepository.readthedocs.io) as an example use case, it covers:
 
  - Setting up DataLad repository for versioning and tracking of data provenance        
  - Making the data repository publicly available via **Amazon AWS** and **OpenNeuro**        
 
-See the [Checklist](checklist.md) provided for help tracking the required action items.
+See the [Checklist](helper-files/checklist.md) provided for help tracking the required action items.
 
 ---
 

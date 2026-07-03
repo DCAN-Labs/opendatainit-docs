@@ -25,8 +25,9 @@ nav:
       - "Step 1: Prepare Data": sop/prep-data.md 
       - "Step 2: Create AWS S3 Bucket": sop/aws.md
       - "Step 3: DataLad": sop/datalad.md
-  - Resources: helper-files/resources.md
-  - Checklist: helper-files/checklist.md
+  - Resources: 
+      - Checklist: helper-files/checklist.md
+      - Resources List: helper-files/resources.md
   - Appendix:
       - AWS Bucket Configuration: appendix/aws-bucket-config.md
       - Conda Environment Configuration: appendix/conda-env-config.md
