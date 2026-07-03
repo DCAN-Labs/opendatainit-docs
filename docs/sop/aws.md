@@ -9,7 +9,7 @@ All MIDB ODI repositories are hosted under the MIDB AWS account managed by the I
 Instead of creating a new fork, use the existing DCAN-Labs fork: [https://github.com/DCAN-Labs/open-data-registry](https://github.com/DCAN-Labs/open-data-registry). **Click “Sync fork” to update it with the latest changes from the main repository.**
 
 ## 3. Create a YAML File
-Add a new YAML file under `/datasets`. We recommend using the [BOBs Repository YAML](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml) as a template. Make a copy, rename the file using your repository name (from Step 1), and update the contents accordingly.
+Add a new YAML file under `/datasets`. We recommend using the [BOBs Repository YAML](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml) as a template. Make a copy, rename the file using the exact name of your repository (from Step 1), and update the contents accordingly.
 
 #### Detailed YAML update guidelines
 
@@ -20,6 +20,9 @@ Add a new YAML file under `/datasets`. We recommend using the [BOBs Repository Y
  - `Resources` > `ARN` and `Explore`: replace `bobsrepository` with your repository name
  - `License` - optional, but recommended (either use template example or leave field blank)
  - Ensure valid YAML formatting, e.g. using quotes for [special characters](https://stackoverflow.com/a/22235064), or when unsure. Formatting errors will be flagged during CI after submitting the PR and can be easily fixed at that point as well
+
+!!! note "Required Fields"
+      Note that not all fields included in the template YAML are technically required and may not be applicable to your repository. See the full list of technically required fields in the [AWS Open Data Registry README](https://github.com/awslabs/open-data-registry#how-are-datasets-added-to-the-registry).
 
 ## 4. Add a Tutorial
 
