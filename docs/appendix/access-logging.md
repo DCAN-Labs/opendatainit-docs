@@ -1,3 +1,5 @@
+!!! warning "Warning: this page is under review and may contain outdated information"
+
 # Tracking Repo Usage: Server Access Logging
 To track the number of repository downloads, views, and other information, you can parse [server access logs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerLogs.html), which provide detailed records for all requests made to a bucket. 
 

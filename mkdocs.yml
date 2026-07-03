@@ -28,10 +28,12 @@ nav:
   - Checklist: checklist.md
   - Appendix:
       - AWS Bucket Configuration: appendix/aws-bucket-config.md
-  - Appendix draft pages:
-      - Tracking Repo Usage: access-logging.md
+      - Conda Environment Configuration: appendix/conda-env-config.md
+      - Tracking Repo Usage: appendix/access-logging.md
+
+  - OLD PAGES UNDER REVIEW:
+      - DRAFT CONTENT: EXTRA.md
       - "Local Installation/Configuration": installation.md
-      - "Initialize & Configure DataLad": datalad-init.md
       - OpenNeuro Integration: openneuro.md
       - Maintenance: maintenance.md
 
