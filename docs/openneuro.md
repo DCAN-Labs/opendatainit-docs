@@ -12,9 +12,6 @@ Otherwise, we recommend running BIDS validation (e.g. the standard [BIDS Validat
 - `WARNINGS` are optional/suggestions for best practice, so can be safely ignored if not applicable to your data (and/or listed as a future continuous improvement item for your dataset)
 
 
-
-
-
 The steps below are derived from the documentation for OpenNeuro Documentation [here](https://docs.openneuro.org/#openneuro-documentation) - please see this page for further details. Note that these steps do not need to be performed separately from the intitial [DataLad setup and configuration](datalad-init.md), but the OpenNeuro interface is still under development, so we recommend following those steps first to ensure that the basic setup is correct before proceeding with configuring OpenNeuro as a GitHub sibling or special remote.
 
 ## Configure credentials
@@ -29,6 +26,11 @@ OR specify as environment variable:
 export OPENNEURO_API_KEY=<api_key>
 deno run -A jsr:@openneuro/cli login --error-reporting true
 ```
+
+## Install OpenNeuro CLI in your Conda Env
+
+- Install deno: `conda install conda-forge::deno`
+- Run `deno run -A jsr:@openneuro/cli --help` - should see usage if it’s working
 
 ## Add OpenNeuro as a GitHub Sibling
 Setting up OpenNeuro as a special remote is not necessary, instead you can push changes via git via the command below (replacing [`https://openneuro.org/datasets/ds005450`](https://openneuro.org/datasets/ds005450), which is the location of BOBSRepository on OpenNeuro, with the location of your repository). During this stage of development, we contacted the OpenNeuro team directly to create a repository for us first that we then add, but that may not be necessary in the future. In addition, there should be support for creating snapshots of sparse datasets from the web UI in the near future.

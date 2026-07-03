@@ -22,9 +22,9 @@ nav:
   - About:
      - Internal SOP for New Repositories: index.md
   - Step-by-Step Guide:
-      - "Step 1: Prepare Data": sop/step1-prep-data.md 
-      - "Step 2: Create AWS S3 Bucket": sop/step2-aws.md
-      - "Step 3: DataLad": sop/step3-datalad.md
+      - "Step 1: Prepare Data": sop/prep-data.md 
+      - "Step 2: Create AWS S3 Bucket": sop/aws.md
+      - "Step 3: DataLad": sop/datalad.md
   - Checklist: checklist.md
   - Appendix:
       - AWS Bucket Configuration: appendix/aws-bucket-config.md
@@ -33,7 +33,6 @@ nav:
 
   - OLD PAGES UNDER REVIEW:
       - DRAFT CONTENT: EXTRA.md
-      - "Local Installation/Configuration": installation.md
       - OpenNeuro Integration: openneuro.md
       - Maintenance: maintenance.md
 

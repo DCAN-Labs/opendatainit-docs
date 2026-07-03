@@ -2,7 +2,16 @@
 
 This guide walks through setting up DataLad using BOB's Repository as an example, including configuring Amazon S3 as a special remote. For additional details, see: [Walk-through: Amazon S3 as a special remote](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#).
 
-### 1. Activate Conda Environment
+### Configure Git Credentials 
+Make sure your [git credentials are configured](https://handbook.datalad.org/en/latest/intro/installation.html#initial-configuration). This will be required when creating the sibling GitHub repository. **THIS ONLY NEEDS TO BE DONE ONCE.**
+
+```bash
+cd ~
+git config --global --add user.name "Bob McBobFace"
+git config --global --add user.email bob@example.com
+```
+
+### Activate Conda Environment
 Activate the CDNI-wide datalad conda environment: 
 
 ```bash
@@ -13,22 +22,25 @@ conda activate datalad
 !!! warning "Warning: Conda Environments"
     You may need to set up your own conda environment in the event that the central CDNI environment is not configured correctly, as there are strict version requirements due to the special use cases employed for DataLad in this workflow. See the [Appendix](../appendix/conda-env_setup.md) for details.
 
-### 2. Set Environmental Variables
-Set your AWS access and secret keys as environmental variables or source stored credentials if you have a `~/.aws/fcpindi.sh` file configured (see instructions [here](installation.md#store-aws-credentials-github-token-optional)):
+### Set Environmental Variables
+Once your AWS S3 bucket is generated ([Step 2](aws.md)), AWS access and secret keys will be provided to you by the Informatics Hub. **Note that these credentials are distinct from your MSI credentials and are required for using Amazon AWS as a special remote.** 
+
+After activating the conda environment, set your AWS access and secret keys as environmental variables in order to be able to push changes to AWS:
 
 ```bash
 # Set AWS credentials as environmental variables
 export AWS_ACCESS_KEY_ID="<access_key_id>"
 export AWS_SECRET_ACCESS_KEY="<secret_access_key>"
-
-# OR source stored credentials
-source ~/.aws/fcpindi.sh
 ```
 
-*Note: if you are using Amazon AWS as a special remote, then the AWS access and secret keys will be provided to you by the Informatics Hub.*
 
-    
-### 3. Initialize DataLad Repository
+
+
+
+
+## UNDER CONSTRUCTION
+
+### Initialize DataLad Repository 
 
 Go to your project folder, initialize datalad, and save (`datalad save` basically combines git commit and git push):
 ```bash
@@ -39,7 +51,7 @@ datalad save -m "example commit message"
 
 Use `datalad status` command as needed to make sure local changes are tracked
 
-### 4. Add Amazon S3 as Special Remote
+### Add Amazon S3 as Special Remote
 Documentation on how to add Amazon AWS as a special remote can be found in the DataLad Handbook [here](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#).
 
 The default behavior of DataLad is to name files with MD5 hashes, which are used by `git-annex` under the hood to manage file versioning. The drawback to this is that the filenames are no longer human-readable unless users download the data via DataLad, which may be an unnecessary barrier to users for data access. We therefore recommend using additional flags when linking the repository to the special remote (`exporttree=yes` and `versioning=yes`). The flags `exporttree=yes` and `versioning=yes` use the original file names instead of replacing them with MD5 hashes. Because MD5 hashes are used for version control, the first flag used in isolation will cause you to lose the direct linkage to the hash-based versioning system, overwriting and removing access to older file versions. The flag `versioning=yes` is therefore required in order to preserve prior file versions on AWS.

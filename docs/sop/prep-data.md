@@ -27,4 +27,13 @@ These are relatively quick and simple improvements that do a lot to improve acce
 2. **Add `index.html` browser interface** for users to navigate folders, download individual files/folders, etc. - e.g. see the [BOBSRepo index](https://bobsrepository.s3.amazonaws.com/index.html) (underlying html structure is [here](https://github.com/DCAN-Labs/bobsrepository/blob/main/index.html) and can be used as a template if helpful).
 
 
+<!-- ### How to run BIDS validation
+When your folder is fully set up, run BIDS validation as a final check. Also remember to run BIDS validation after adding any additional files needed (e.g. `index.html` and a zip file - see [Amazon AWS Configuration](#amazon-aws-configuration))
+```bash
+module load conda
+source activate datalad_BR
+deno run -A jsr:@bids/validator <dataset path> > /path/to/denoresults.txt
+``` -->
+
+
 
