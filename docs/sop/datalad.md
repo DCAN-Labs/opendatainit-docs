@@ -33,13 +33,6 @@ export AWS_ACCESS_KEY_ID="<access_key_id>"
 export AWS_SECRET_ACCESS_KEY="<secret_access_key>"
 ```
 
-
-
-
-
-
-## UNDER CONSTRUCTION
-
 ### Initialize DataLad Repository 
 
 Go to your project folder, initialize datalad, and save (`datalad save` basically combines git commit and git push):
@@ -51,6 +44,21 @@ datalad save -m "example commit message"
 
 Use `datalad status` command as needed to make sure local changes are tracked
 
+### Create GitHub Sibling
+Next, DataLad creates an empty dataset repository on GitHub. The flag `--publish-depends SIBLINGNAME` sets a publication dependency so that whenever you push your changes, the annexed contents are first pushed to the special remote and then GitHub: 
+
+```bash
+datalad create-sibling-github -d . DCAN-Labs/bobsrepository /
+--publish-depends aws --credential <GitHub username>
+```
+
+Confirm the creation of the sibling (named github) with datalad siblings - example from handbook:
+```bash
+$ datalad siblings
+.: here(+) [git]
+.: aws(+) [git]
+.: github(-) [https://github.com/DCAN-Labs/bobsrepository.git (git)]
+```
 ### Add Amazon S3 as Special Remote
 Documentation on how to add Amazon AWS as a special remote can be found in the DataLad Handbook [here](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#).
 
@@ -67,23 +75,7 @@ Set bucket URL for git-annex to be able to download files from the bucket withou
 git annex enableremote aws publicurl="https://bobsrepository.s3.amazonaws.com”
 ```
 
-### 5. Create GitHub Sibling
-Next, DataLad creates an empty dataset repository on GitHub. The flag `--publish-depends SIBLINGNAME` sets a publication dependency so that whenever you push your changes, the annexed contents are first pushed to the special remote and then GitHub: 
-
-```bash
-datalad create-sibling-github -d . DCAN-Labs/bobsrepository /
---publish-depends aws --credential <GitHub username>
-```
-
-Confirm the creation of the sibling (named github) with datalad siblings - example from handbook:
-```bash
-$ datalad siblings
-.: here(+) [git]
-.: aws(+) [git]
-.: github(-) [https://github.com/DCAN-Labs/bobsrepository.git (git)]
-```
-
-### 6. Publish
+### Publish
 Push updated file contents and data provenance for versioning to S3 and Github. The first command is required when using the `exporttree=yes` flag for special remotes. Also note that you may have to enter your GitHub credentials a few times with the final command:
 
 ```bash
@@ -93,10 +85,7 @@ datalad push --to github
 
 You should now be able to see the updated files on S3 and symlinks in Github (these are not the files, but rather symbolic links to annexed data on the S3 remote).
 
-
-
-<br><br><br><br><br>
-
+---
 
 ## Starting Over
 This should be avoided of course, but if you need to delete your repository and remake it due to errors in configuration that can't be resolved, remember to delete all of the following (DO NOT DELETE SOURCE DATA!):
@@ -105,7 +94,9 @@ This should be avoided of course, but if you need to delete your repository and 
 - DataLad repository on MSI/local (if you get permission denied, change permissions and then delete)
 - Amazon AWS contents 
 
-## Additional Resources
+---
+
+## Resources
 **DataLad Handbook:**   
 [8.4 Walk-through: Amazon S3 as a special remote](https://handbook.datalad.org/en/latest/basics/101-139-s3.html)  
 [8.4.6 Advanced Examples](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#advanced-examples)    
