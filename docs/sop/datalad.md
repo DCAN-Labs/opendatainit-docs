@@ -23,7 +23,7 @@ conda activate datalad
     You may need to set up your own conda environment in the event that the central CDNI environment is not configured correctly, as there are strict version requirements due to the special use cases employed for DataLad in this workflow. See the [Appendix](../appendix/conda-env-config.md) for details.
 
 ### Set Environmental Variables
-Once your AWS S3 bucket is generated ([Step 2](aws.md)), AWS access and secret keys will be provided to you by the Informatics Hub. **Note that these credentials are distinct from your MSI credentials and are required for using Amazon AWS as a special remote.** 
+Once your AWS S3 bucket is generated, AWS access and secret keys will be provided to you by the Informatics Hub. **Note that these credentials are distinct from your MSI credentials and are required for using Amazon AWS as a special remote.** 
 
 After activating the conda environment, set your AWS access and secret keys as environmental variables in order to be able to push changes to AWS:
 
