@@ -1,17 +1,16 @@
 # Step 2: Create Amazon AWS S3 Bucket
 
-Below are steps to setting up a new Amazon AWS S3 bucket. In summary, you create a fork of the AWS [open-data-registry](https://github.com/awslabs/open-data-registry) repository on Github, add a configuration file for your repository to [`datasets/`](https://github.com/awslabs/open-data-registry/tree/main/datasets), and submit a pull request (PR) for Amazon to review. 
+The process for creating/submitting a new repository to Amazon AWS is slightly unusual, but the steps are fairly simple. We recommend following the adapted instructions provided below as part of the steps have already been completed for you as part of the MIDB ODI resource. However, for further guidance, please see the AWS [open-data-registry](https://github.com/awslabs/open-data-registry) repository README on Github, which also includes a video tutorial of this process - ([Adding your dataset to the Registry of Open Data on AWS](https://youtu.be/5nocWdjN1DA)). 
 
-## Link to MIDB Account
+## Initiate Creation of the Amazon AWS Bucket
 
-All data MIDB ODI repositories live under the MIDB departmental AWS account managed by the Informatics Hub. Please contact Lucille Moore, who can facilitate connecting you with the Informatics Hub to initiate the process of requesting a new data repository setup, i.e. a new S3 bucket on Amazon AWS.
+All data MIDB ODI repositories live under the MIDB departmental AWS account managed by the Informatics Hub. Please contact Lucille Moore, who can facilitate connecting you with the Informatics Hub to initiate the process of requesting a new data repository setup, i.e. a new S3 bucket on Amazon AWS. You do not need to have everything figured out/complete before doing this, it just allows Informatics time to connect with Amazon so that they know to expect a new submission from us for when you are ready to [submit a pull request](#submit-pull-request) to Amazon for review.
 
-## Update DCAN-Labs Fork 
+## Sync Existing Fork Under DCAN-Labs 
+Normally the first step would be to create a fork of the AWS [open-data-registry](https://github.com/awslabs/open-data-registry) repository on Github. We already have an existing fork under the DCAN-Labs organization [here](https://github.com/DCAN-Labs/open-data-registry), so simply click **Sync fork** to update it fork from the central repository.
 
-The registry of open data is located in the [open-data-registry](https://github.com/awslabs/open-data-registry) repository. A forked version under DCAN-Labs is [here](https://github.com/DCAN-Labs/open-data-registry); select **Sync fork** to update.
-
-### Add New YAML File
-You will need to add a new YAML file to this repository under `/datasets` using the standard name you decided on for the project. To get started, we recommend making a copy of the make a copy of [BOBs Repository YAML](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml) and updating with information for your own repo. There is also an [example YAML](https://github.com/awslabs/open-data-registry#how-are-datasets-added-to-the-registry) provided in the repository README.
+## Add a New YAML File for Your Repository
+Nex you will create a new YAML file under `/datasets`. The general documentation provides an [example YAML](https://github.com/awslabs/open-data-registry#how-are-datasets-added-to-the-registry), but we recommend simply making a copy of the [BOBs Repository YAML](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml), updating the filename with the name of your repository (using the exact string you decided on in Step 1 - [Decide on Name of Repository](step1-prep-data.md#decide-on-name-of-repository)), and updating the contents from there.
 
 **Tips for constructing YAML file using [BOBs Repository YAML](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml) as the template:**
 
@@ -21,13 +20,13 @@ You will need to add a new YAML file to this repository under `/datasets` using 
  - Follow standard YAML formatting to avoid errors, e.g. use quotation marks for [special characters](https://stackoverflow.com/a/22235064). Include quotations when in doubt. Formatting errors will also be caught during continuous integration (CI) after submitting your pull request and can be fixed easily at that stage.
 
 ### Create Tutorial  
-Within the YAML file (under `DataAtWork` > `Tutorials`), you are required to provide a link to a “tutorial,” which for a data repository can simply be instructions on how to access and download the data. Some helpful examples include: 
+Note that one of the YAML file fields is `DataAtWork` > `Tutorials`. You are required to provide a link to a “tutorial,” which for a data repository can simply be instructions on how to access and download the data or some other very minimal documentation. Some helpful examples include: 
 
 - BOBSRepo - [View or Download the BOBS Repository](https://bobsrepository.readthedocs.io/data_access/) 
 - [INDI tutorial](https://fcon_1000.projects.nitrc.org/indi/s3/index.html) (provides a basic explanation of the data format/organization and how to access via Cyberduck)
 
 ## Submit Pull Request
-Once your repository is ready, simply submit a pull request (PR) to the central repository. Also make sure to notify Lucille Moore and the Informatics Hub, who will then coordinate with Amazon to link your repo to the MIDB account. After the PR is merged (this may take a few days), Amazon will create a S3 bucket for you on AWS (named as defined in your YAML file) and send AWS credentials with read/write access to you.
+Once these steps are complete, submit a pull request (PR) to the central repository and notify Lucille Moore and/or the Informatics Hub, who will then coordinate with Amazon to link your repository to the MIDB account and fasttrack review/approval. After the PR is merged (this may take a few days), Amazon will create a S3 bucket for you on AWS (named as defined in your YAML file) and send AWS credentials with read/write access to you.
 
 ## AWS Bucket Configuration (OPTIONAL)
 

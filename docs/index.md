@@ -8,3 +8,7 @@ This documentation is provided to guide MIDB users in setting up an open data re
  - Making the data repository publicly available via **Amazon AWS** and **OpenNeuro**        
 
 See the [Checklist](checklist.md) provided for help tracking the required action items.
+
+> **⚠️ WARNING: Scope & Limitations**
+> This workflow is currently intended for small datasets only. For details and future updates for larger datasets stored in MSI S3 buckets, see [this note](datalad-init.md#note-for-small-data-repositories-only).
+

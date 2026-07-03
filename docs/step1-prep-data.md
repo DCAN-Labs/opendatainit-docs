@@ -1,30 +1,30 @@
-> **⚠️ WARNING**
-> The current workflow is for smaller datasets only - [see details](datalad-init.md#note-for-small-data-repositories-only). The workflow will be adapted for larger datasets stored in MSI S3 buckets in the future
-
 # Step 1: Data Preparation & General Requirements
 
-## De-identification and Permission to Share Publicly
-Make sure that the dataset can be shared publicly without violating HIPAA or data use agreements! You may need to perform de-identification, including defacing, for MRI. See [CDNI Brain](https://cdnis-brain.readthedocs.io/deidentification/#de-identification-of-mri-image-data) documentation for more information on how to perform defacing and other de-identification methods such as DICAT.
+**NOTE that the items below don't need to be completed in order. If you get stuck, just move on to another section while waiting on assistance.**
 
-## Decide on Name of Repository
-It's important to settle on a repository name early on as the name must be consistent when going through the multiple stages of setup (local project folder name, configuration files, github repository, etc.). The name should be simple and straightforward to describe what the contents of the data are. For example, the name of the Baby Open Brain (BOBs) Repository is `bobsrepository`.
+## 1. BIDS Formatting & Validation
 
-## Create Project Folder on MSI Tier1 
+Ensure your dataset follows the Brain Imaging Data Structure ([BIDS](https://bids-specification.readthedocs.io/en/stable/)) standard. Non-BIDS files (e.g., index.html, zip archives) can be added to a `.bidsignore` file. Note that strict BIDS adherence is required if you choose to link your repository to OpenNeuro after setting up the Amazon AWS repository (discussed later in this documentation).
 
-- **Create a project folder containing your data on MSI tier 1 - the name of the folder must match the repository name you decided on above**
-- **Store a backup of this source folder in an S3 bucket on MSI tier** - 
-This folder will be converted to a DataLad repository that will serve as the source data for shared data. Sometimes DataLad configuration gets messed up and you essentially need to rebuild the repository from scratch, so it's critical that you have a totally separate additional source folder that is never touched that you can always recover from.
+## 2. De-identification & Permission to Share
+Ensure your dataset can be shared publicly without violating HIPAA or any data use agreements. This may include, for example, removing identifiable metadata (e.g. with DICAT) and defacing MRI images. See the [CDNI Brain](https://cdnis-brain.readthedocs.io/deidentification/#de-identification-of-mri-image-data) documentation for guidance on defacing and other de-identification methods.
 
-## Add AWS Helper Files
+## 3. Choose a Repository Name
+Select a clear, descriptive repository name early in the process. The name must remain consistent across all steps, including the local project folder, configuration files, GitHub repository name, etc. Keep it simple and descriptive. For example, the repo name for the Baby Open Brain (BOBs) Repository is `bobsrepository`.
 
-#### Zip Files for Quick Download
-We recommend including a zip file that contains the full contents of the BIDS repository. This should only contain the files/folders relevant to the BIDS repository and can exclude files like `.bidsignore` and `.gitignore`. This file enables users to quickly download the entire contents of the repository as a zip file via their browser by simply clicking on a link.
+## 4. Create Project Folder on MSI Tier 1
+Create a project folder on MSI Tier 1 containing your dataset - **the folder name must match your repository name from the prior step.**
 
-#### Add `index.html` file
-This file is the interface for the repository on Amazon AWS. For instance, the BOBSRepository AWS page is here: [https://bobsrepository.s3.amazonaws.com/index.html](https://bobsrepository.s3.amazonaws.com/index.html). It allows you to browse the contents of the repo and also download the full contents via the **Download Entire Repository** button at the bottom of the page (which links to the zip file). See the source file for this `index.html` file [here](https://github.com/DCAN-Labs/bobsrepository/blob/main/index.html).
+> ⚠️ **Critical: Create a Backup**
+> Store a separate, untouched backup of this folder in an MSI S3 bucket. This backup should never be modified and will allow you to recover if the DataLad setup becomes corrupted or needs to be rebuilt.
 
-## BIDS formatting & validation
-The entire project folder must follow the [Brain Imaging Data Structure](https://bids-specification.readthedocs.io/en/stable/) standard. Add any non-BIDS files to a `.bidsignore` file, **including the `index.html` and zip files mentioned in the prior step.**
+## 5. AWS Helper Files (*Optional but highly recommended*)
+These are relatively quick and simple improvements that do a lot to improve accessibility for users. If you need assistance, feel free to move on to next steps and follow up with Lucille Moore in the meantime. 
 
-We recommend running BIDS validation (e.g. the standard [BIDS Validator](https://bids-standard.github.io/bids-validator/)). Be sure to address all `ERRORS` to ensure BIDS compliance (note that `WARNINGS` are suggestions, not requirements, so may safely be ignored if not applicable to your data).
+1. **Zip File for Full Download**: Create a .zip archive of the entire repository to allow one-click downloads via a browser. Include only relevant dataset contents (e.g. can exclude files like `.bidsignore` and `.gitignore`)
+
+2. **Add `index.html` browser interface** to allow users to navigate folders, download individual files, and/or download the full dataset as a zip file. See
+ [https://bobsrepository.s3.amazonaws.com/index.html](https://bobsrepository.s3.amazonaws.com/index.html) for example. The underlying code can be copied and modified as needed from [https://github.com/DCAN-Labs/bobsrepository/blob/main/index.html](https://github.com/DCAN-Labs/bobsrepository/blob/main/index.html).
+
+
 

@@ -1,5 +1,20 @@
 # Integration With OpenNeuro
 
+
+
+## NOTES
+
+ as well, as datasets will not be published to OpenNeuro without fully passing BIDS validation. Our datasets are generally BIDS valid, and you may end up adding more files to your repository as part of the process of submitting to the MIDB ODI, so feel free to skip this step for now if you are already familiar with BIDS. 
+
+Otherwise, we recommend running BIDS validation (e.g. the standard [BIDS Validator](https://bids-standard.github.io/bids-validator/)):
+
+- `ERRORS` must be fixed
+- `WARNINGS` are optional/suggestions for best practice, so can be safely ignored if not applicable to your data (and/or listed as a future continuous improvement item for your dataset)
+
+
+
+
+
 The steps below are derived from the documentation for OpenNeuro Documentation [here](https://docs.openneuro.org/#openneuro-documentation) - please see this page for further details. Note that these steps do not need to be performed separately from the intitial [DataLad setup and configuration](datalad-init.md), but the OpenNeuro interface is still under development, so we recommend following those steps first to ensure that the basic setup is correct before proceeding with configuring OpenNeuro as a GitHub sibling or special remote.
 
 ## Configure credentials
