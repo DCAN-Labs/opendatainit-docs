@@ -1,9 +1,6 @@
 # Step 2: Create an AWS S3 Bucket
 
-Below we walk through how to submit a new repository to AWS. These steps have been adapted and simplified from the [AWS Open Data Registry README](https://github.com/awslabs/open-data-registry) to provide templates available for pre-established workflows/templates provided for MIDB ODI datasets.
-
-
-We recommend following the adapted instructions provided below as part of the steps have already been completed for you as part of the MIDB ODI resource. However, for further guidance, please see the , including the [video tutorial](https://youtu.be/5nocWdjN1DA).
+Below we walk through how to submit a new repository to AWS. These steps have been adapted and simplified from the [AWS Open Data Registry README](https://github.com/awslabs/open-data-registry) to provide resources and streamlined workflows developed for MIDB ODI datasets. However, we still recommend reviewing the main AWS documentation as it provides a nice overview and additional information that you may find helpful if you get stuck, including a [video tutorial](https://youtu.be/5nocWdjN1DA).
 
 ## 1. Request a New S3 Bucket
 All MIDB ODI repositories are hosted under the MIDB AWS account managed by the Informatics Hub. Contact Lucille Moore to initiate a request for a new S3 bucket. You do not need to have all details finalized, this step simply notifies Informatics and AWS in advance of your upcoming submission to help streamline connecting to the MIDB account and submission acceptance.
