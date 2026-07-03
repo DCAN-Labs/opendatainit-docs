@@ -12,7 +12,7 @@ export AWS_ACCESS_KEY_ID="<access_key_id>"
 export AWS_SECRET_ACCESS_KEY="<secret_access_key>"
 ```
 
-Login via OpenNeuro CLI:
+If applicable, login via OpenNeuro CLI:
 ```bash
 export OPENNEURO_API_KEY=<api_key>
 deno run -A jsr:@openneuro/cli login --error-reporting true

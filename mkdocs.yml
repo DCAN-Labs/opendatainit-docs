@@ -29,8 +29,6 @@ nav:
       - Checklist: helper-files/checklist.md
       - Resources List: helper-files/resources.md
   - Appendix:
-      - AWS Bucket Configuration: appendix/aws-bucket-config.md
-      - Conda Environment Configuration: appendix/conda-env-config.md
       - Tracking Repo Usage: appendix/access-logging.md
       - OpenNeuro Integration: appendix/openneuro.md
       - Troubleshooting: appendix/troubleshooting.md

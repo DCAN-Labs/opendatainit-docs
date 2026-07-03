@@ -1,5 +1,11 @@
 # Resources
 
+### Amazon AWS
+
+ - [open-data-registry](https://github.com/DCAN-Labs/open-data-registry?tab=readme-ov-file#registry-of-open-data-on-aws)
+ - [AWS Onboarding Handbook for Data Providers](https://assets.opendata.aws/aws-onboarding-handbook-for-data-providers-en-US.pdf)      
+ - [AWS Samples](https://github.com/aws-samples/)  
+ - [Youtube tutorial: adding your data to Registry of Open Data on AWS](https://www.youtube.com/watch?v=5nocWdjN1DA)
 
 ### Setting up DataLad - see DataLad Handbook
 
