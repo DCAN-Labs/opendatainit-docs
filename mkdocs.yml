@@ -30,9 +30,7 @@ nav:
       - Resources List: helper-files/resources.md
   - Appendix:
       - Tracking Repo Usage: appendix/access-logging.md
-      - OpenNeuro Integration: 
-          - Basic Setup: appendix/openneuro.md
-          - Repo Configuration: appendix/openneuro-config.md
+      - OpenNeuro Integration: appendix/openneuro.md
       - Troubleshooting: appendix/troubleshooting.md
       - Maintenance: appendix/maintenance.md
       

@@ -2,6 +2,9 @@
 
 This guide walks through setting up DataLad using BOB's Repository as an example, including creating a sibling GitHub repository to store metadata for provenance and configuring Amazon S3 as a special remote for public data sharing. 
 
+!!! warning "BIDS Validation"
+    Remember to do a [final check for BIDS compliance](prep-data.md#final-bids-validation), including adding non-BIDS files (e.g., `index.html` and zip files) to a `.bidsignore` file in the root project folder.
+
 ---
 
 ## 3.1: Initial Setup & Conda Environment

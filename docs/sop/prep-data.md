@@ -5,7 +5,7 @@
 
 ## BIDS Formatting
 
-Ensure your dataset follows the Brain Imaging Data Structure ([BIDS](https://bids-specification.readthedocs.io/en/stable/)) standard. Non-BIDS files (e.g., index.html, zip archives) can be added to a `.bidsignore` file. Note that strict BIDS adherence is required if you choose to link your repository to OpenNeuro after setting up the Amazon AWS repository (discussed later in this documentation).
+Ensure your dataset follows the Brain Imaging Data Structure ([BIDS](https://bids-specification.readthedocs.io/en/stable/)) standard. **Be sure to add non-BIDS files (e.g., `index.html`, zip archives) to a `.bidsignore` file so that you don't run into BIDS validation errors down the line** (particularly if you are planning to integrate with OpenNeuro - [see details](../appendix/openneuro.md)).
 
 ## De-identification & Permission to Share
 Ensure your dataset can be shared publicly without violating HIPAA or any data use agreements. This may include, for example, removing identifiable metadata (e.g. with DICAT) and defacing MRI images. See the [CDNI Brain](https://cdnis-brain.readthedocs.io/deidentification/#de-identification-of-mri-image-data) documentation for guidance on defacing and other de-identification methods.
@@ -35,5 +35,7 @@ source activate datalad_BR
 deno run -A jsr:@bids/validator <dataset path> > /path/to/denoresults.txt
 ``` -->
 
+## Final BIDS Validation
 
+After updating your local data folder in preparation for converting to a DataLad repository, we recommend running your repository through a BIDS validator using either the standard [BIDS Validator](https://bids-standard.github.io/bids-validator/) or your preferred tool. As a reminder, `ERRORS` must be fixed, whereas `WARNINGS` are optional/suggestions for best practice, so can be safely ignored if not applicable to your data (and/or listed as a future continuous improvement item for your dataset).
 
