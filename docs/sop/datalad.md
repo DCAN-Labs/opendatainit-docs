@@ -1,6 +1,10 @@
 # Step 3: Set up DataLad Repository
 
-This guide walks through setting up DataLad using BOB's Repository as an example, including configuring Amazon S3 as a special remote. For additional details, see: [Walk-through: Amazon S3 as a special remote](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#).
+This guide walks through setting up DataLad using BOB's Repository as an example, including creating a sibling GitHub repository to store metadata for provenance and configuring Amazon S3 as a special remote for public data sharing. 
+
+---
+
+## 3.1: Initial Configuration/Setup
 
 ### Configure Git Credentials 
 Make sure your [git credentials are configured](https://handbook.datalad.org/en/latest/intro/installation.html#initial-configuration). This will be required when creating the sibling GitHub repository. **THIS ONLY NEEDS TO BE DONE ONCE.**
@@ -15,7 +19,7 @@ git config --global --add user.email bob@example.com
 Activate the CDNI-wide datalad conda environment: 
 
 ```bash
-source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh 
+source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
 conda activate datalad
 ```
 
@@ -33,14 +37,23 @@ export AWS_ACCESS_KEY_ID="<access_key_id>"
 export AWS_SECRET_ACCESS_KEY="<secret_access_key>"
 ```
 
+---
+
+## 3.2: Initialize DataLad
+
 ### Initialize DataLad Repository 
 
-Go to your project folder, initialize datalad, and save (`datalad save` basically combines git commit and git push):
+Go to your project folder, initialize datalad, and save:
 ```bash
 cd /path/to/your/datalad/repo
-datalad create --force 
-datalad save -m "example commit message"
+datalad create --force
+datalad save -m "initial commit"
 ```
+
+<!-- NOTE: for Julia repo, time for single zip file (~50GB) was ~4 min for this step -->
+
+- `--force` is necessary for non-empty folders
+- `datalad save` basically combines `git commit` and `git push` commands
 
 Use `datalad status` command as needed to make sure local changes are tracked
 
@@ -61,8 +74,17 @@ $ datalad siblings
 ```
 
 
+
+
+Hendrickson TJ, Reiners P, Moore LA, Lundquist JT, Fayzullobekova B, Perrone AJ, Lee EG, Moser J, Day TKM, Alexopoulos D, Styner M, Kardan O, Chamberlain TA, Mummaneni A, Caldas HA, Bower B, Stoyell S, Martin T, Sung S, Fair EA, Carter K, Uriarte-Lopez J, Rueter AR, Yacoub E, Rosenberg MD, Smyser CD, Elison JT, Graham A, Fair DA, Feczko E. BIBSNet: A Deep Learning Baby Image Brain Segmentation Network for MRI Scans. bioRxiv [Preprint]. 2025 Jan 11:2023.03.22.533696. doi: 10.1101/2023.03.22.533696. Update in: Dev Cogn Neurosci. 2026 Jun;79:101706. doi: 10.1016/j.dcn.2026.101706. PMID: 36993540; PMCID: PMC10055337.
+
+
+
+
+## 3.3: Connect to AWS S3 & Publish
+
 ### Add Amazon S3 as Special Remote
-Documentation on how to add Amazon AWS as a special remote can be found in the DataLad Handbook [here](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#).
+The process for adding an Amazon S3 as a special remote is described in the DataLad Handbook - see [Walk-through: Amazon S3 as a special remote](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#).
 
 The default behavior of DataLad is to name files with MD5 hashes, which are used by `git-annex` under the hood to manage file versioning. The drawback to this is that the filenames are no longer human-readable unless users download the data via DataLad, which may be an unnecessary barrier to users for data access. We therefore recommend using additional flags when linking the repository to the special remote (`exporttree=yes` and `versioning=yes`). The flags `exporttree=yes` and `versioning=yes` use the original file names instead of replacing them with MD5 hashes. Because MD5 hashes are used for version control, the first flag used in isolation will cause you to lose the direct linkage to the hash-based versioning system, overwriting and removing access to older file versions. The flag `versioning=yes` is therefore required in order to preserve prior file versions on AWS.
 

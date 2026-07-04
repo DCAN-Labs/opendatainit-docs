@@ -11,6 +11,8 @@ Instead of creating a new fork, use the existing DCAN-Labs fork: [https://github
 ## Create a YAML File
 To register your dataset in the Open Data Registry, add a new YAML file under `/datasets` with information specific to your data repository. We recommend copying the [BOBs Repository YAML](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml) as a starting template. Rename the file to match your repository name and update the fields accordingly.
 
+The YAML file will be used to generate the summary page for your repository on AWS. For example, the information displayed for BOBSRepo on [https://registry.opendata.aws/bobsrepository/](https://registry.opendata.aws/bobsrepository/) is sourced from the YAML within the main AWS repository [here](https://github.com/awslabs/open-data-registry/blob/main/datasets/bobsrepository.yaml).
+
 !!! note "General Note"
       The YAML does not need to be perfect on your first attempt. Mistakes in formatting or missing required fields will be flagged by CI checks when you submit the PR and can be resolved at that point.
 
