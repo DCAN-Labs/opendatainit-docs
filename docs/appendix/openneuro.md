@@ -1,5 +1,3 @@
-!!! warning "WARNING: PAGE CURRENTLY BEING UPDATED"
-
 # Integration With OpenNeuro
 
 The steps below are derived from the documentation for OpenNeuro Documentation [here](https://docs.openneuro.org/#openneuro-documentation) - please see this page for further details. Note that at the time this was written, the OpenNeuro interface was still under development, so details below may need to be updated.
