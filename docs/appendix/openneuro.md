@@ -3,9 +3,9 @@
 
 # Integration With OpenNeuro
 
-The steps below are derived from the documentation for OpenNeuro Documentation [here](https://docs.openneuro.org/#openneuro-documentation) - please see this page for further details. Note that these steps do not need to be performed separately from the intitial [DataLad setup and configuration](datalad-init.md), but the OpenNeuro interface is still under development, so we recommend following those steps first to ensure that the basic setup is correct before proceeding with configuring OpenNeuro as a GitHub sibling or special remote.
+The steps below are derived from the documentation for OpenNeuro Documentation [here](https://docs.openneuro.org/#openneuro-documentation) - please see this page for further details. Note that at the time this was written, the OpenNeuro interface was still under development, so it's possible that the processes outlined below have since become more automated and user-friendly.
 
-## Configure credentials
+## Configure OpenNeuro credentials
 
 - If you haven't already, create an account on [OpenNeuro](https://openneuro.org/) using your UMN email
 - Generate an API key at [https://openneuro.org/keygen](https://openneuro.org/keygen) - save this somewhere private
@@ -41,11 +41,6 @@ Finally, to push changes to OpenNeuro:
 ```bash
 $ datalad push --to openneuro.org --data nothing
 ```
-<br><br><br><br><br><br><br><br><br>
-
-
-## OTHER
-
 
 ## OpenNeuro Compatibility Configuration
 The `.gitattributes` file needs to be properly set up mostly for OpenNeuro compatibility - see the section of their website on [Repository Conventions](https://docs.openneuro.org/git.html#repository-conventions):
@@ -88,12 +83,9 @@ Depending on the file, OpenNeuro requires or recommends that files be git-annex 
 **Meaning:** File is always stored in annex, no matter the size.        
 **Examples:** `phenotype/*.tsv` files
 
+#### BIDS Validation
 
-
-
-## NOTES
-
- as well, as datasets will not be published to OpenNeuro without fully passing BIDS validation. Our datasets are generally BIDS valid, and you may end up adding more files to your repository as part of the process of submitting to the MIDB ODI, so feel free to skip this step for now if you are already familiar with BIDS. 
+Datasets will not be published to OpenNeuro without fully passing BIDS validation. Our datasets are generally BIDS valid, and you may end up adding more files to your repository as part of the process of submitting to the MIDB ODI, so feel free to skip this step for now if you are already familiar with BIDS. 
 
 Otherwise, we recommend running BIDS validation (e.g. the standard [BIDS Validator](https://bids-standard.github.io/bids-validator/)):
 
