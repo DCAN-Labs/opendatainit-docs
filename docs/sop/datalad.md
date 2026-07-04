@@ -4,7 +4,7 @@ This guide walks through setting up DataLad using BOB's Repository as an example
 
 ---
 
-## 3.1: Initial Configuration/Setup
+## 3.1: Initial Setup & Conda Environment
 
 ### Configure Git Credentials 
 Make sure your [git credentials are configured](https://handbook.datalad.org/en/latest/intro/installation.html#initial-configuration). This will be required when creating the sibling GitHub repository. **THIS ONLY NEEDS TO BE DONE ONCE.**
@@ -25,17 +25,6 @@ conda activate datalad
 
 !!! warning "Warning: Conda Environments"
     You may need to set up your own conda environment in the event that the central CDNI environment is not configured correctly, as there are strict version requirements due to the special use cases employed for DataLad in this workflow. See the [Appendix](../appendix/conda-env-config.md) for details.
-
-### Set Environmental Variables
-Once your AWS S3 bucket is generated, AWS access and secret keys will be provided to you by the Informatics Hub. **Note that these credentials are distinct from your MSI credentials and are required for using Amazon AWS as a special remote.** 
-
-After activating the conda environment, set your AWS access and secret keys as environmental variables in order to be able to push changes to AWS:
-
-```bash
-# Set AWS credentials as environmental variables
-export AWS_ACCESS_KEY_ID="<access_key_id>"
-export AWS_SECRET_ACCESS_KEY="<secret_access_key>"
-```
 
 ---
 
@@ -73,15 +62,18 @@ $ datalad siblings
 .: github(-) [https://github.com/DCAN-Labs/bobsrepository.git (git)]
 ```
 
-
-
-
-Hendrickson TJ, Reiners P, Moore LA, Lundquist JT, Fayzullobekova B, Perrone AJ, Lee EG, Moser J, Day TKM, Alexopoulos D, Styner M, Kardan O, Chamberlain TA, Mummaneni A, Caldas HA, Bower B, Stoyell S, Martin T, Sung S, Fair EA, Carter K, Uriarte-Lopez J, Rueter AR, Yacoub E, Rosenberg MD, Smyser CD, Elison JT, Graham A, Fair DA, Feczko E. BIBSNet: A Deep Learning Baby Image Brain Segmentation Network for MRI Scans. bioRxiv [Preprint]. 2025 Jan 11:2023.03.22.533696. doi: 10.1101/2023.03.22.533696. Update in: Dev Cogn Neurosci. 2026 Jun;79:101706. doi: 10.1016/j.dcn.2026.101706. PMID: 36993540; PMCID: PMC10055337.
-
-
-
-
 ## 3.3: Connect to AWS S3 & Publish
+
+### Set Environmental Variables
+Once your AWS S3 bucket is generated, AWS access and secret keys will be provided to you by the Informatics Hub. **Note that these credentials are distinct from your MSI credentials and are required for using Amazon AWS as a special remote.** 
+
+After activating the conda environment, set your AWS access and secret keys as environmental variables in order to be able to push changes to AWS:
+
+```bash
+# Set AWS credentials as environmental variables
+export AWS_ACCESS_KEY_ID="<access_key_id>"
+export AWS_SECRET_ACCESS_KEY="<secret_access_key>"
+```
 
 ### Add Amazon S3 as Special Remote
 The process for adding an Amazon S3 as a special remote is described in the DataLad Handbook - see [Walk-through: Amazon S3 as a special remote](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#).
