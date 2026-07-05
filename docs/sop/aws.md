@@ -29,8 +29,6 @@ Below is a step-by-step guide for submitting a new repository to AWS, adapted fr
 
 To create your own YAML file, make a copy of the [BOBs Repository YAML](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml) (stored under `/datasets`), rename as `{REPO_NAME}.yaml`, and updating the field values. You can always make updates later - formatting errors and missing required fields will be flagged by CI checks when you submit the PR and can be resolved at that point.
 
-### Guidance
-
  - **File naming:** Ensure the filename exactly matches the repository name you defined in Step 1.
  - **Review required fields:** See the [AWS Open Data Registry README](https://github.com/awslabs/open-data-registry#how-are-datasets-added-to-the-registry) for a full list of required and optional fields and descriptions
  - **Required field values for MIDB ODI**: use the following values for these fields (as displayed in the BOBSRepo YAML), except to replace `{YOUR REPO NAME}` with the name of your repository (again needs to match what you decided in Step 1 exactly)

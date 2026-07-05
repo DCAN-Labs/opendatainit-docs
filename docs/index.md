@@ -11,7 +11,7 @@ This documentation is provided to guide MIDB users in setting up an open data re
  - Setting up DataLad repository for versioning and tracking of data provenance        
  - Making the data repository publicly available via **Amazon AWS** and **OpenNeuro**        
 
-See the [Checklist](helper-files/checklist.md) provided for help tracking the required action items.
+<!-- See the [Checklist](helper-files/checklist.md) provided for help tracking the required action items. -->
 
 ---
 
@@ -22,6 +22,6 @@ The current workflows outlined are intended only for smaller repositories that c
 
 Larger neuroimaging datasets often contain hundreds to thousands of subjects, making it impractical to download the entire dataset at once. Instead, large datasets should be structured differently, employing dataset hierarchies to create [subdatasets/submodules](https://docs.datalad.org/en/stable/generated/man/datalad-subdatasets.html) for each subject folder. Large repositories also typically have their source data stored in [tier 2 storage](https://msi.umn.edu/our-resources/knowledge-base/stratus-faqs/what-tier-2-storage)
 
-For guidance on handling large datasets, please refer to the adapted workflow in the [internal documentation](https://docs.google.com/document/d/1qEC6YwhW-kik2z1EZAlhhUgNSrgH9XlweW-avR00Yls/edit?usp=sharing).
+<!-- For guidance on handling large datasets, please refer to the adapted workflow in the [internal documentation](https://docs.google.com/document/d/1qEC6YwhW-kik2z1EZAlhhUgNSrgH9XlweW-avR00Yls/edit?usp=sharing). -->
 
 
