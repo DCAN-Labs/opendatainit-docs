@@ -4,7 +4,7 @@ This guide walks through setting up DataLad using BOB's Repository as an example
 
 ---
 
-## 3.1: Initial Setup & Conda Environment
+## 3.1 Initial Setup & Conda Environment
 
 ### Configure Git Credentials 
 Make sure your [git credentials are configured](https://handbook.datalad.org/en/latest/intro/installation.html#initial-configuration). This will be required when creating the sibling GitHub repository. **THIS ONLY NEEDS TO BE DONE ONCE.**
@@ -28,18 +28,16 @@ conda activate datalad
 
 ---
 
-## 3.2: Initialize DataLad
+## 3.2 Initialize DataLad
 
 ### Initialize DataLad Repository 
 
 Go to your project folder, initialize datalad, and save:
 ```bash
-cd /path/to/your/datalad/repo
+cd /path/to/{REPO_NAME}
 datalad create --force
 datalad save -m "initial commit"
 ```
-
-<!-- NOTE: for Julia repo, time for single zip file (~50GB) was ~4 min for this step -->
 
 - `--force` is necessary for non-empty folders
 - `datalad save` basically combines `git commit` and `git push` commands
@@ -50,7 +48,7 @@ Use `datalad status` command as needed to make sure local changes are tracked
 Next, DataLad creates an empty dataset repository on GitHub. The flag `--publish-depends SIBLINGNAME` sets a publication dependency so that whenever you push your changes, the annexed contents are first pushed to the special remote and then GitHub: 
 
 ```bash
-datalad create-sibling-github -d . DCAN-Labs/bobsrepository /
+datalad create-sibling-github -d . DCAN-Labs/{REPO_NAME} /
 --publish-depends aws --credential <GitHub username>
 ```
 
@@ -59,15 +57,15 @@ Confirm the creation of the sibling (named github) with datalad siblings - examp
 $ datalad siblings
 .: here(+) [git]
 .: aws(+) [git]
-.: github(-) [https://github.com/DCAN-Labs/bobsrepository.git (git)]
+.: github(-) [https://github.com/DCAN-Labs/{REPO_NAME}.git (git)]
 ```
 
-## 3.3: Connect to AWS S3 & Publish
+## 3.3 Connect to AWS S3 & Publish
 
 ### Set Environmental Variables
 Once your AWS S3 bucket is generated, AWS access and secret keys will be provided to you by the Informatics Hub. **Note that these credentials are distinct from your MSI credentials and are required for using Amazon AWS as a special remote.** 
 
-After activating the conda environment, set your AWS access and secret keys as environmental variables in order to be able to push changes to AWS:
+Activate your conda environment (if you haven't already) and set your AWS access and secret keys as environmental variables in order to be able to push changes to AWS:
 
 ```bash
 # Set AWS credentials as environmental variables
@@ -82,13 +80,13 @@ The default behavior of DataLad is to name files with MD5 hashes, which are used
 
 To add Amazon S3 as a special remote, use the following command:
 ```bash
-git annex initremote aws type=S3 encryption=none bucket=bobsrepository /
+git annex initremote aws type=S3 encryption=none bucket={REPO_NAME} /
 autoenable=true signature=v4 datacenter=us-east-2 public=yes exporttree=yes versioning=yes
 ```
 
 Set bucket URL for git-annex to be able to download files from the bucket without requiring your AWS credentials:
 ```bash
-git annex enableremote aws publicurl="https://bobsrepository.s3.amazonaws.com”
+git annex enableremote aws publicurl="https://{REPO_NAME}.s3.amazonaws.com”
 ```
 
 ### Publish
