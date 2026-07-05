@@ -2,9 +2,6 @@
 
 This guide walks through setting up DataLad using BOB's Repository as an example, including creating a sibling GitHub repository to store metadata for provenance and configuring Amazon S3 as a special remote for public data sharing. 
 
-!!! warning "BIDS Validation"
-    Remember to do a [final check for BIDS compliance](prep-data.md#final-bids-validation), including adding non-BIDS files (e.g., `index.html` and zip files) to a `.bidsignore` file in the root project folder.
-
 ---
 
 ## 3.1: Initial Setup & Conda Environment
@@ -27,7 +24,7 @@ conda activate datalad
 ```
 
 !!! warning "Warning: Conda Environments"
-    You may need to set up your own conda environment in the event that the central CDNI environment is not configured correctly, as there are strict version requirements due to the special use cases employed for DataLad in this workflow. See the [Appendix](../appendix/conda-env-config.md) for details.
+    If you run into potential issues with the conda environment at any point, such as errors about incorrect package versions or commands not working as expected, see [Troubleshooting > Conda Environment Setup](../appendix/troubleshooting.md#conda-environment-setup).
 
 ---
 
