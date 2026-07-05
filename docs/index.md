@@ -1,8 +1,6 @@
 # MIDB Open Data Initiative
 
-Welcome to the documentation for creating and publishing datasets through the Masonic Institute for the Developing Brain Open Data Initiative (MIDB ODI)!
-
-The MIDB ODI integrates [Amazon S3](https://aws.amazon.com/s3/) for storage, DataLad for version control, and AWS and OpenNeuro for public data access. Data are hosted through the AWS [Open Data Sponsorship Program](https://aws.amazon.com/opendata/open-data-sponsorship-program/), supporting public distribution, management, and tracking of datasets.
+Welcome to the documentation for creating and publishing datasets through the Masonic Institute for the Developing Brain Open Data Initiative (**MIDB ODI**)! The MIDB ODI integrates [Amazon S3](https://aws.amazon.com/s3/) for storage, DataLad for version control, and AWS and OpenNeuro for public data access. Data are hosted through the AWS [Open Data Sponsorship Program](https://aws.amazon.com/opendata/open-data-sponsorship-program/), supporting public distribution, management, and tracking of datasets.
 
 **This guide provides internal SOPs for MIDB users who wish to share their dataset via the MIDB ODI, including:**
 

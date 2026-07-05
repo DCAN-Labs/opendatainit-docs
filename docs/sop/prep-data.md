@@ -4,7 +4,7 @@
     The items below don't need to be completed in order. If you get stuck, feel free to move on to another section while waiting for assistance.
 
 ## Define Repository Name - `REPO_NAME`
-Choose a single repository name that will be used consistently across all stages of this workflow (which we will refer to as `REPO_NAME` in this documentation). This name acts as a global identifier for your dataset and will be reused in multiple systems, including DataLad, GitHub, and AWS. Renaming later can be difficult and may require reconfiguration across these platforms. 
+Choose a single repository name that will be used consistently across all stages and systems involved in this workflow, including DataLad, GitHub, and AWS. Renaming later can be difficult and may require reconfiguration across these platforms, so we recommend deciding on a name early on, which we will refer to as `REPO_NAME` in this documentation.
 
 **Naming guidelines:**
 
@@ -28,11 +28,12 @@ Ensure your dataset can be shared publicly without violating HIPAA or any data u
 ---
 
 ## BIDS Formatting
-Ensure your dataset follows the Brain Imaging Data Structure ([BIDS](https://bids-specification.readthedocs.io/en/stable/)) standard. **Be sure to add non-BIDS files (e.g., `index.html`, zip archives) to a `.bidsignore` file so that you don't run into BIDS validation errors down the line** (particularly if you are planning to integrate with OpenNeuro - [see details](../appendix/openneuro.md)).
+ - Datasets must adhere to the Brain Imaging Data Structure ([BIDS](https://bids-specification.readthedocs.io/en/stable/)) standard
+ - Add non-BIDS-compliant files (e.g., `index.html`, zip archives) to a `.bidsignore` file to avoid running into BIDS validation errors down the line *(particularly if you are planning to [integrate with OpenNeuro](../appendix/openneuro.md), which requires strict BIDS compliance)*
 
 ---
 
-## Create Project Folder (MSI Tier 1) & S3 Backup
+## Create Tier1 Project Folder & S3 Backup
  - Create a project folder on MSI Tier 1 containing your dataset with the folder name `REPO_NAME` ([see details](#define-repository-name-repo_name)).
  - **Store a separate, untouched backup of this folder in an MSI S3 bucket.** This backup will not be converted to a DataLad repository and is only to be used to recover the data if the DataLad setup becomes corrupted or needs to be rebuilt from scratch. This is your personal source bucket to use as a backup, so doesn't require special naming or configuration.
 
