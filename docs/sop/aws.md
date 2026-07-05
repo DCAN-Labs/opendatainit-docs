@@ -1,20 +1,33 @@
 # Step 2: Create an AWS S3 Bucket
 
-Below we walk through how to submit a new repository to AWS. These steps have been adapted and simplified from the [AWS Open Data Registry README](https://github.com/awslabs/open-data-registry) to provide resources and streamlined workflows developed for MIDB ODI datasets. However, we still recommend reviewing the main AWS documentation as it provides a nice overview and additional information that you may find helpful if you get stuck, including a [video tutorial](https://youtu.be/5nocWdjN1DA).
+Below is a step-by-step guide for submitting a new repository to AWS, adapted from the [AWS Open Data Registry README](https://github.com/awslabs/open-data-registry) with notes specific to MIDB ODI datasets. For additional context and troubleshooting, we recommend reviewing the official AWS documentation, which includes a helpful overview and a [video tutorial](https://youtu.be/5nocWdjN1DA).
 
 ## Request a New S3 Bucket
-All MIDB ODI repositories are hosted under the MIDB AWS account managed by the Informatics Hub. Contact Lucille Moore to initiate a request for a new S3 bucket. You do not need to have all details finalized, this step simply notifies Informatics and AWS in advance of your upcoming submission to help streamline connecting to the MIDB account and submission acceptance.
 
-## Sync the Existing Fork 
-Instead of creating a new fork, use the existing DCAN-Labs fork: [https://github.com/DCAN-Labs/open-data-registry](https://github.com/DCAN-Labs/open-data-registry). **Click “Sync fork” to update it with the latest changes from the main repository.**
+<input type="checkbox"> **Contact Lucille Moore to initiate request for new AWS repository**
+
+**Details:** All MIDB ODI repositories are hosted under the MIDB AWS account managed by the Informatics Hub. Contact Lucille Moore to initiate a request for a new S3 bucket. You do not need to have all details finalized, this step simply notifies Informatics and AWS in advance of your upcoming submission to help streamline connecting to the MIDB account and submission acceptance.
+
+---
+
+## Sync the Forked Repository Under DCAN-Labs
+<input type="checkbox"> **Go to [https://github.com/DCAN-Labs/open-data-registry](https://github.com/DCAN-Labs/open-data-registry) and click "Sync fork"**
+
+**Details:** The documentation instructs you to create a fork of the main `open-data-registry` repository, which already exists under the DCAN-Labs GitHub organization. Simply ensure that the forked repository is up-to-date with "Sync fork"
+
+<!-- 
+- Go to the existing DCAN-Labs fork of the main `open-data-registry` repository at [https://github.com/DCAN-Labs/open-data-registry](https://github.com/DCAN-Labs/open-data-registry)
+- Click “Sync fork” to update with the latest changes from the main repository -->
+
+---
 
 ## Create a YAML File
-To register your dataset in the Open Data Registry, add a new YAML file under `/datasets` with information specific to your data repository. We recommend copying the [BOBs Repository YAML](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml) as a starting template. Rename the file to match your repository name and update the fields accordingly.
 
-The YAML file will be used to generate the summary page for your repository on AWS. For example, the information displayed for BOBSRepo on [https://registry.opendata.aws/bobsrepository/](https://registry.opendata.aws/bobsrepository/) is sourced from the YAML within the main AWS repository [here](https://github.com/awslabs/open-data-registry/blob/main/datasets/bobsrepository.yaml).
+<input type="checkbox"> **Make copy of the [BOBs Repository YAML](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml), rename as `{REPO_NAME}.yaml`, and update the file with information specific to your dataset.**
 
-!!! note "General Note"
-      The YAML does not need to be perfect on your first attempt. Mistakes in formatting or missing required fields will be flagged by CI checks when you submit the PR and can be resolved at that point.
+**Details:** Information about your dataset to be hosted on the Open Data Registry is provided via a YAML file, used to generate the repo summary page on AWS. For example, the information displayed for BOBSRepo on [https://registry.opendata.aws/bobsrepository/](https://registry.opendata.aws/bobsrepository/) is sourced from the YAML within the main AWS repository [here](https://github.com/awslabs/open-data-registry/blob/main/datasets/bobsrepository.yaml).
+
+To create your own YAML file, make a copy of the [BOBs Repository YAML](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml) (stored under `/datasets`), rename as `{REPO_NAME}.yaml`, and updating the field values. You can always make updates later - formatting errors and missing required fields will be flagged by CI checks when you submit the PR and can be resolved at that point.
 
 ### Guidance
 

@@ -16,3 +16,14 @@ This way, whenever you activate the datalad conda environment, you can just run 
 ```bash
 source ~/.aws/fcpindi.sh
 ```
+
+
+
+<!-- ### How to run BIDS validation
+When your folder is fully set up, run BIDS validation as a final check. Also remember to run BIDS validation after adding any additional files needed (e.g. `index.html` and a zip file - see [Amazon AWS Configuration](#amazon-aws-configuration))
+```bash
+module load conda
+source activate datalad_BR
+deno run -A jsr:@bids/validator <dataset path> > /path/to/denoresults.txt
+``` -->
+

@@ -9,15 +9,13 @@ Below is a checklist of the essential tasks outlined on this site. Feel free to 
 <input type="checkbox"> Ensure that data is in BIDs format  
 
 **Initialize AWS Bucket:**      
-<input type="checkbox"> Link to MIDB Account                    
-<input type="checkbox"> Create YAML File        
-<input type="checkbox"> Create Tutorial     
-<input type="checkbox"> Submit Pull Request     
-<input type="checkbox"> AWS Bucket Configuration
+<input type="checkbox"> Link to MIDB Account (contact Informatics Hub for help with this)                   
+<input type="checkbox"> Create YAML File    
+<input type="checkbox"> Submit Pull Request (your AWS S3 bucket will be available once merged, which may take a few days - contact the Informatics Hub for help) 
 
 **Set up DataLad using Amazon S3 as special remote:**  
-<input type="checkbox"> Complete initial setup and requirements steps  
-<input type="checkbox"> Complete steps to initialize DataLad repository  
-<input type="checkbox"> Add Amazon S3 as special remote         
-<input type="checkbox"> Create GitHub Sibling and Publish       
-<input type="checkbox"> Add OpenNeuro as a GitHub sibling   
+<input type="checkbox"> Complete initial setup and configuration
+<input type="checkbox"> Initialize DataLad repository  
+<input type="checkbox"> Create GitHub Sibling       
+<input type="checkbox"> Add Amazon S3 as special remote     
+<input type="checkbox"> PUBLISH!
