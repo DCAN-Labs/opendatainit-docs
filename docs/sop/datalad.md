@@ -15,6 +15,10 @@ git config --global --add user.name "Bob McBobFace"
 git config --global --add user.email bob@example.com
 ```
 
+### Create Personal Access Token
+
+You will need to create a personal access token on GitHub in order to create the GitHub sibling repo for annexation ([see details](#create-github-sibling)) - see instructions on the [GitHub documentation](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens). **Your GitHub personal access token must have permissions to create repositories in the DCAN-Labs organization** - speak with the CDNI/DCAN operations staff, leadership, and/or CDNI project managers for assistance if you do not have access to the DCAN-Labs organization on GitHub.
+
 ### Activate Conda Environment
 Activate the CDNI-wide datalad conda environment: 
 
@@ -28,9 +32,7 @@ conda activate datalad
 
 ---
 
-## 3.2 Initialize DataLad
-
-### Initialize DataLad Repository 
+## 3.2 Initialize DataLad Repository 
 
 Go to your project folder, initialize datalad, and save:
 ```bash
@@ -41,26 +43,38 @@ datalad save -m "initial commit"
 
 - `--force` is necessary for non-empty folders
 - `datalad save` basically combines `git commit` and `git push` commands
+- Use `datalad status` command as needed to make sure local changes are tracked
 
-Use `datalad status` command as needed to make sure local changes are tracked
+---
 
-### Create GitHub Sibling
-Next, DataLad creates an empty dataset repository on GitHub. The flag `--publish-depends SIBLINGNAME` sets a publication dependency so that whenever you push your changes, the annexed contents are first pushed to the special remote and then GitHub: 
+## 3.3 Create GitHub Sibling Repository
 
-```bash
-datalad create-sibling-github -d . DCAN-Labs/{REPO_NAME} /
---publish-depends aws --credential <GitHub username>
+Next, we will have DataLad create an empty dataset repository on GitHub where the data will be annexed.
+
+### Set GitHub Token as Environmental Variable
+
+First set your GitHub personal access token (that you generated in [this step](#create-personal-access-token)) as an environmental variable. DataLad specifically supports credentials through an environment variable named `DATALAD_CREDENTIAL_<CREDENTIAL-NAME>_TOKEN`, so `--credential github` used to create the GitHub sibling in the next step corresponds to `DATALAD_CREDENTIAL_GITHUB_TOKEN`. **Set your GitHub personal access token as an environmental variable like so:**
+
+```
+export DATALAD_CREDENTIAL_GITHUB_TOKEN='paste-your-github-token-here'
 ```
 
-Confirm the creation of the sibling (named github) with datalad siblings - example from handbook:
+### Generate GitHub Sibling
+
+To create the GitHub sibling, run:
+
+```bash
+datalad create-sibling-github -d . DCAN-Labs/{REPO_NAME} --credential github
+```
+
+You can confirm the creation of the sibling (named github) with the `datalad siblings` command:
 ```bash
 $ datalad siblings
 .: here(+) [git]
-.: aws(+) [git]
 .: github(-) [https://github.com/DCAN-Labs/{REPO_NAME}.git (git)]
 ```
 
-## 3.3 Connect to AWS S3 & Publish
+## 3.3 Connect to AWS S3
 
 ### Set Environmental Variables
 Once your AWS S3 bucket is generated, AWS access and secret keys will be provided to you by the Informatics Hub. **Note that these credentials are distinct from your MSI credentials and are required for using Amazon AWS as a special remote.** 
@@ -89,7 +103,20 @@ Set bucket URL for git-annex to be able to download files from the bucket withou
 git annex enableremote aws publicurl="https://{REPO_NAME}.s3.amazonaws.com”
 ```
 
-### Publish
+---
+
+## 3.4 Update GitHub sibling configuration
+
+Once the Amazon S3 has been added as a special remote, you will next update the dependencies for your GitHub sibling repository with the flag `--publish-depends aws`. This flag sets a publication dependency so that whenever you push your changes, the annexed contents are first pushed to the special remote and then GitHub (so that the information is updated/annexed across platforms):
+
+```bash
+datalad siblings configure \
+    -d . \
+    -s github \
+    --publish-depends aws
+```
+
+## 3.5 Publish
 Push updated file contents and data provenance for versioning to S3 and Github. The first command is required when using the `exporttree=yes` flag for special remotes. Also note that you may have to enter your GitHub credentials a few times with the final command:
 
 ```bash
