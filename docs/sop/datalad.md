@@ -127,5 +127,27 @@ datalad push --to github
 You should now be able to see the updated files on S3 and symlinks in Github (these are not the files, but rather symbolic links to annexed data on the S3 remote).
 
 
+## Environmental Setup: Quick Tips
+
+In cases where you need to update your DataLad repository or pick up from a certain stage of the repository setup, etc. remember to always activate the `datalad` conda environment and set the appropriate environmental variables like so (this documentation assumes that you have completed all of the necessary setup described above):
+
+
+**1. Activate the CDNI-wide datalad conda environment**
+
+```bash
+source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
+conda activate datalad
+```
+
+**2. Set Environmental Variables**
+
+```bash
+# GitHub Token
+export DATALAD_CREDENTIAL_GITHUB_TOKEN="{your-github-token}"
+
+# AWS credentials
+export AWS_ACCESS_KEY_ID="{access_key_id}"
+export AWS_SECRET_ACCESS_KEY="{secret_access_key}"
+```
 
 
