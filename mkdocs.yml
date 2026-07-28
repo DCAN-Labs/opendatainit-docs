@@ -24,7 +24,8 @@ nav:
   - Step-by-Step Guide:
       - "Step 1: Prepare Data": sop/prep-data.md 
       - "Step 2: Create AWS S3 Bucket": sop/aws.md
-      - "Step 3: DataLad": sop/datalad.md
+      - "Step 3: Environment Setup": sop/setup.md
+      - "Step 4: DataLad": sop/datalad.md
   - Resources: 
       - Checklist: helper-files/checklist.md
       - Resources List: helper-files/resources.md
