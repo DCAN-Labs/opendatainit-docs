@@ -6,8 +6,7 @@ This guide walks through setting up DataLad using BOB's Repository as an example
 
 ## Set Up Environment
 
-See [Step 3.2 Before running any DataLad workflow](setup.md#32-before-running-any-datalad-workflow).
-
+Remember to set up your environment first if you haven't already - see [Before running any DataLad workflow](setup.md#32-before-running-any-datalad-workflow).
 
 ---
 
@@ -34,7 +33,7 @@ To create the GitHub sibling, run:
 datalad create-sibling-github -d . DCAN-Labs/{REPO_NAME} --credential github
 ```
 
-*DataLad specifically supports credentials through an environment variable named `DATALAD_CREDENTIAL_<CREDENTIAL-NAME>_TOKEN`, so `--credential github` used to create the GitHub sibling in corresponds to `DATALAD_CREDENTIAL_GITHUB_TOKEN` that you defined during setup [here](setup.md#32-before-running-any-datalad-workflow).*
+DataLad specifically supports credentials through an environment variable named `DATALAD_CREDENTIAL_<CREDENTIAL-NAME>_TOKEN`, so `--credential github` used to create the GitHub sibling in this command corresponds to `DATALAD_CREDENTIAL_GITHUB_TOKEN` [defined during env setup](setup.md#before-running-any-datalad-workflow).
 
 You can confirm the creation of the sibling (named github) with the `datalad siblings` command:
 ```bash
