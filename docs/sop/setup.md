@@ -1,6 +1,6 @@
 # Step 3: Set up Environment
 
-## 3.1 One-Time Setup Items
+## One-Time Setup Items
 
 #### Git Credentials 
 See [DataLad documentation for configuring git credentials](https://handbook.datalad.org/en/latest/intro/installation.html#initial-configuration). Run the following commands in your home directory on MSI:
@@ -18,7 +18,7 @@ You will need to create a personal access token on GitHub - see [GitHub document
 ---
 
 
-## 3.2 Before running any DataLad workflow
+## Before running any DataLad workflow
 
 Assuming you have completed the setup outlined in **3.1** above: moving forward, **before running any DataLad workflow** (e.g., updating a repository, creating a sibling, or configuring AWS), you will need to:
 
