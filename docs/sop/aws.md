@@ -4,14 +4,14 @@ Below is a step-by-step guide for submitting a new repository to AWS, adapted fr
 
 ## Request a New S3 Bucket
 
-<input type="checkbox"> *Contact Lucille Moore to initiate request for new AWS repository addition*
+**Contact Lucille Moore to initiate request for new AWS repository addition**
 
 All MIDB ODI repositories are hosted under the MIDB AWS account managed by the Informatics Hub. Contact Lucille Moore to initiate a request for a new S3 bucket. You do not need to have all details finalized, this step simply notifies Informatics and AWS in advance of your upcoming submission to help streamline connecting to the MIDB account and submission acceptance.
 
 ---
 
 ## Sync the Forked Repository Under DCAN-Labs
-<input type="checkbox"> *Go to [https://github.com/DCAN-Labs/open-data-registry](https://github.com/DCAN-Labs/open-data-registry) and click "Sync fork"*
+**Go to [https://github.com/DCAN-Labs/open-data-registry](https://github.com/DCAN-Labs/open-data-registry) and click "Sync fork"**
 
 The documentation instructs you to create a fork of the main `open-data-registry` repository, which already exists under the DCAN-Labs GitHub organization. Simply ensure that the forked repository is up-to-date with "Sync fork".
 
@@ -19,7 +19,7 @@ The documentation instructs you to create a fork of the main `open-data-registry
 
 ## Create a YAML File
 
-<input type="checkbox"> *Copy [BOBs Repository YAML](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml), rename as `{REPO_NAME}.yaml`, and update the file with information specific to your dataset.*
+**Copy [BOBs Repository YAML](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml), rename as `{REPO_NAME}.yaml`, and update the file with information specific to your dataset.**
 
 Information about your dataset to be hosted on the Open Data Registry is provided via a YAML file, used to generate the repo summary page on AWS. For example, the information displayed for BOBSRepo on [https://registry.opendata.aws/bobsrepository/](https://registry.opendata.aws/bobsrepository/) is sourced from the YAML within the main AWS repository [here](https://github.com/awslabs/open-data-registry/blob/main/datasets/bobsrepository.yaml).
 
@@ -48,6 +48,6 @@ Resources:
 
 ## Submit Pull Request
 
-<input type="checkbox"> *Submit PR and resolve any errors*
+**Submit PR and resolve any CI errors**
 
-Once these steps are complete, submit a pull request to the main repository and notify Lucille Moore and the Informatics Hub, who will coordinate with AWS to link your repository to the MIDB account. When you submit your PR, CI (continuous integration) checks are run and may show errors if there are issues with your YAML file (including missing required fields or incorrect YAML formatting). Address these errors so that the PR is able to be merged. After the PR is merged (this may take a few days), AWS will create the S3 bucket and Informatics will configure the bucket to give you read/write access. 
+Once these steps are complete, submit a pull request to the main repository and notify Lucille Moore and the Informatics Hub, who will coordinate with AWS to link your repository to the MIDB account. When you submit your PR, CI (continuous integration) checks are run and may show errors if there are issues with your YAML file (e.g. missing required fields or incorrect YAML formatting). Address these errors so that the PR is able to be merged. After the PR is merged (this may take a few days), AWS will create the S3 bucket and Informatics will configure the bucket to give you read/write access. 
