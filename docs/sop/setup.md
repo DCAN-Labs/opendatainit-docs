@@ -20,11 +20,7 @@ You will need to create a personal access token on GitHub - see [GitHub document
 
 ## Before running any DataLad workflow
 
-Assuming you have completed the setup outlined in **3.1** above: moving forward, **before running any DataLad workflow** (e.g., updating a repository, creating a sibling, or configuring AWS), you will need to:
-
-!!! warning "Warning: Conda Environments"
-    If you run into potential issues with the conda environment at any point, such as errors about incorrect package versions or commands not working as expected, see [Troubleshooting > Conda Environment Setup](../appendix/troubleshooting.md#conda-environment-setup).
-
+Assuming you have completed the setup outlined above: moving forward, **before running any DataLad workflow** (e.g., updating a repository, creating a sibling, or configuring AWS), you will need to:
 
 **1. Activate the CDNI-wide datalad conda environment**
 
