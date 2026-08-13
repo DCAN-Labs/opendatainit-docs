@@ -26,7 +26,7 @@ datalad save -m "initial commit"
 
 ---
 
-### Generate GitHub Sibling Repository
+## Generate GitHub Sibling Repository
 
 To create the GitHub sibling, run:
 
@@ -43,7 +43,9 @@ $ datalad siblings
 .: github(-) [https://github.com/DCAN-Labs/{REPO_NAME}.git (git)]
 ```
 
-## 3.4 Connect to AWS S3
+---
+
+## Connect to AWS S3
 
 ### Set Environmental Variables
 Once your AWS S3 bucket is generated, AWS access and secret keys will be provided to you by the Informatics Hub. **Note that these credentials are distinct from your MSI credentials and are required for using Amazon AWS as a special remote.** 
@@ -57,25 +59,37 @@ export AWS_SECRET_ACCESS_KEY="<secret_access_key>"
 ```
 
 ### Add Amazon S3 as Special Remote
-The process for adding an Amazon S3 as a special remote is described in the DataLad Handbook - see [Walk-through: Amazon S3 as a special remote](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#).
 
-The default behavior of DataLad is to name files with MD5 hashes, which are used by `git-annex` under the hood to manage file versioning. The drawback to this is that the filenames are no longer human-readable unless users download the data via DataLad, which may be an unnecessary barrier to users for data access. We therefore recommend using additional flags when linking the repository to the special remote (`exporttree=yes` and `versioning=yes`). The flags `exporttree=yes` and `versioning=yes` use the original file names instead of replacing them with MD5 hashes. Because MD5 hashes are used for version control, the first flag used in isolation will cause you to lose the direct linkage to the hash-based versioning system, overwriting and removing access to older file versions. The flag `versioning=yes` is therefore required in order to preserve prior file versions on AWS.
+The process for adding an Amazon S3 as a special remote is described in the DataLad Handbook - see [Walk-through: Amazon S3 as a special remote](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#). Note that the default behavior of DataLad is to name files with MD5 hashes, used by `git-annex` under the hood to manage file versioning. For accessibility, we use the flags `exporttree=yes` and `versioning=yes` to use use the original file names instead of replacing them with MD5 hashes.
+
+
+<!-- First flag used in isolation will cause you to lose the direct linkage to the hash-based versioning system, overwriting and removing access to older file versions. The flag `versioning=yes` is therefore required in order to preserve prior file versions on AWS. -->
 
 To add Amazon S3 as a special remote, use the following command:
+
 ```bash
-git annex initremote aws type=S3 encryption=none bucket={REPO_NAME} datacenter=us-east-2 public=yes autoenable=true signature=v4   exporttree=yes versioning=yes
+git annex initremote aws \
+    type=S3 \
+    encryption=none \
+    bucket={REPO_NAME} \
+    datacenter=us-east-2 \
+    autoenable=true \
+    exporttree=yes \
+    versioning=yes
 ```
 
-Set bucket URL for git-annex to be able to download files from the bucket without requiring your AWS credentials:
+Then configure anonymous retrieval to allow downloads from the bucket without requiring AWS credentials:
+
 ```bash
-git annex enableremote aws publicurl="https://{REPO_NAME}.s3.amazonaws.com”
+git annex enableremote aws \
+    publicurl=https://{REPO_NAME}.s3.us-east-2.amazonaws.com
 ```
 
 ---
 
-## 3.5 Update GitHub sibling configuration
+## Update GitHub sibling configuration
 
-Once the Amazon S3 has been added as a special remote, you will next update the dependencies for your GitHub sibling repository with the flag `--publish-depends aws`. This flag sets a publication dependency so that whenever you push your changes, the annexed contents are first pushed to the special remote and then GitHub (so that the information is updated/annexed across platforms):
+Update the dependencies for your GitHub sibling repository with the flag `--publish-depends aws`. This flag sets a publication dependency so that whenever you push your changes, the annexed contents are first pushed to the special remote and then GitHub (so that the information is updated/annexed across platforms):
 
 ```bash
 datalad siblings configure \
@@ -84,7 +98,7 @@ datalad siblings configure \
     --publish-depends aws
 ```
 
-## 3.6 Publish
+## Publish
 Push updated file contents and data provenance for versioning to S3 and Github. The first command is required when using the `exporttree=yes` flag for special remotes. Also note that you may have to enter your GitHub credentials a few times with the final command:
 
 ```bash
@@ -93,5 +107,15 @@ datalad push --to github
 ```
 
 You should now be able to see the updated files on S3 and symlinks in Github (these are not the files, but rather symbolic links to annexed data on the S3 remote).
+
+## Starting from Scratch
+
+This should be avoided of course, but sometimes configuration errors with the initial setup are more quickly solved by starting from scratch. To do so, delete all of the following:
+
+- GitHub repository (do not create a new one after deleting- this will be done automatically as part of the configuration process)
+- DataLad repository on MSI/local (if you get permission denied, change permissions and then delete)
+- Amazon AWS bucket contents 
+
+**NEVER DELETE ORIGINAL SOURCE DATA STORED OUTSIDE OF THE DATALAD REPOSITORY**
 
 
