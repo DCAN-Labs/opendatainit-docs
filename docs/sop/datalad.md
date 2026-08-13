@@ -63,8 +63,7 @@ The default behavior of DataLad is to name files with MD5 hashes, which are used
 
 To add Amazon S3 as a special remote, use the following command:
 ```bash
-git annex initremote aws type=S3 encryption=none bucket={REPO_NAME} /
-autoenable=true signature=v4 datacenter=us-east-2 public=yes exporttree=yes versioning=yes
+git annex initremote aws type=S3 encryption=none bucket={REPO_NAME} datacenter=us-east-2 public=yes autoenable=true signature=v4   exporttree=yes versioning=yes
 ```
 
 Set bucket URL for git-annex to be able to download files from the bucket without requiring your AWS credentials:
