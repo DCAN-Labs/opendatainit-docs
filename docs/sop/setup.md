@@ -31,6 +31,8 @@ conda activate datalad
 
 **2. Define required environmental variables**
 
+Note: After creating your AWS S3 bucket, the Informatics Hub will provide you with AWS access and secret keys that will be required for using Amazon AWS as a special remote. Also note that these credentials are distinct from your MSI credentials.
+
 ```bash
 # GitHub Token
 export DATALAD_CREDENTIAL_GITHUB_TOKEN="{your-github-token}"
@@ -39,6 +41,8 @@ export DATALAD_CREDENTIAL_GITHUB_TOKEN="{your-github-token}"
 export AWS_ACCESS_KEY_ID="{access_key_id}"
 export AWS_SECRET_ACCESS_KEY="{secret_access_key}"
 ```
+
+
 
 
 
