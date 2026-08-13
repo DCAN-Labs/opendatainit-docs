@@ -36,6 +36,7 @@ Ensure your dataset can be shared publicly without violating HIPAA or any data u
 
  - Datasets must adhere to the Brain Imaging Data Structure ([BIDS](https://bids-specification.readthedocs.io/en/stable/)) standard
  - Add non-BIDS-compliant files (e.g., `index.html`, zip archives) to a `.bidsignore` file to avoid running into BIDS validation errors down the line *(particularly if you are planning to [integrate with OpenNeuro](../appendix/openneuro.md), which requires strict BIDS compliance)*
+ - To be thorough, you may run your repository through a BIDS validator (e.g. the standard [BIDS Validator](https://bids-standard.github.io/bids-validator/) or your preferred tool) and fix all `ERRORS` (`WARNINGS` are optional/suggestions for best practice, so can be safely ignored if not applicable to your data)
 
 ---
 
@@ -54,16 +55,6 @@ Ensure your dataset can be shared publicly without violating HIPAA or any data u
 
 This step is optional, but highly recommended as they are relatively simple improvements that do a lot to improve accessibility for users. 
 
-1. Create a .zip file of the entire repository to allow one-click downloads via a browser (can exclude files like `.bidsignore` and `.gitignore`)
+1. If your repository is small enough, create a .zip file of the entire repository to allow one-click downloads via a browser (can exclude files like `.bidsignore` and `.gitignore`)
 
-2. Add `index.html` browser interface for users to navigate folders, download individual files/folders, etc. - e.g. see the [BOBSRepo index](https://bobsrepository.s3.amazonaws.com/index.html) (underlying html structure is [here](https://github.com/DCAN-Labs/bobsrepository/blob/main/index.html) and can be used as a template if helpful).
-
----
-
-## Final Checks - BIDS Validation
-
-<input type="checkbox"> *Run BIDS validation to perform final checks prior to converting to DataLad* 
-
-Review the items above to ensure that you have completed each one. In addition, we recommend running your repository through a BIDS validator, using either the standard [BIDS Validator](https://bids-standard.github.io/bids-validator/) or your preferred tool. This will help catch errors in case, for example, you added an `index.html` file and forgot to add it to `.bidsignore`. 
-
-As a reminder, `ERRORS` must be fixed, whereas `WARNINGS` are optional/suggestions for best practice, so can be safely ignored if not applicable to your data (and/or listed as a future continuous improvement item for your dataset).
+2. Add `index.html` browser interface for users to navigate folders, download individual files/folders, etc. - e.g. see the [BOBSRepo index](https://bobsrepository.s3.amazonaws.com/index.html) (underlying html structure is [here](https://github.com/DCAN-Labs/bobsrepository/blob/main/index.html) and can be used as a template if helpful). Remember to add this file to `.bidsignore` to keep the data repo BIDS valid
