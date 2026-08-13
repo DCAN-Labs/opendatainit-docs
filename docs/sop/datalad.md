@@ -6,7 +6,7 @@ This guide walks through setting up DataLad using BOB's Repository as an example
 
 ## Set Up Environment
 
-Remember to set up your environment first if you haven't already - see [Before running any DataLad workflow](setup.md#32-before-running-any-datalad-workflow).
+Remember to set up your environment first if you haven't already - see [Before running any DataLad workflow](setup.md#before-running-any-datalad-workflow).
 
 ---
 
