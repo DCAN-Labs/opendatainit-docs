@@ -1,5 +1,4 @@
-scratch.md
-scratch-docs/
+LOCAL/
 code/downloaded_logs/
-code/parsed_logs/*
+code/parsed_logs/
 .DS_Store
