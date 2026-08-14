@@ -6,6 +6,7 @@
  - [AWS Onboarding Handbook for Data Providers](https://assets.opendata.aws/aws-onboarding-handbook-for-data-providers-en-US.pdf)      
  - [AWS Samples](https://github.com/aws-samples/)  
  - [Youtube tutorial: adding your data to Registry of Open Data on AWS](https://www.youtube.com/watch?v=5nocWdjN1DA)
+ - [Template YAML](https://github.com/DCAN-Labs/opendatainit-docs/blob/main/resources/template-yaml.yaml)
 
 ---
 
