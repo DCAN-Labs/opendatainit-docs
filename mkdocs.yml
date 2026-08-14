@@ -24,14 +24,11 @@ nav:
   - Step-by-Step Guide:
       - First Steps: sop/first-steps.md
       - Prep Source Data: sop/prep-data.md
-      - Prep DataLad Folder: sop/prep-dl-folder.md
       - AWS Submission: sop/prep-submission.md
       - Environment Setup: sop/setup.md
       - DataLad: sop/datalad.md
-  - Resources: 
-      - Checklist: helper-files/checklist.md
-      - Resources List: helper-files/resources.md
   - Appendix:
+      - Resources: appendix/resources.md
       - Tracking Repo Usage: appendix/access-logging.md
       - OpenNeuro Integration: appendix/openneuro.md
       - Maintenance: appendix/maintenance.md

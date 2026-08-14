@@ -5,7 +5,8 @@ This guide walks through the steps to convert your dataset to a DataLad reposito
 !!! warning "Always remember to initialize your environment first"
     Remember to set up your environment first- see [Before running any DataLad workflow](setup.md#before-running-any-datalad-workflow).
 
-## 1. Initialize DataLad Repository 
+## Initial Setup
+### 1. Initialize DataLad Repository 
 
 Navigate to your project directory and initialize it as a DataLad dataset, replacing `{REPO_NAME}` with the name of your project folder:
 
@@ -20,9 +21,7 @@ datalad status
 
 Note that the `datalad save` command records the current state of the dataset in a new commit, but does not push those changes to GitHub or S3.
 
----
-
-## 2. Create the GitHub Sibling
+### 2. Create the GitHub Sibling
 
 Create a GitHub repository in the DCAN-Labs organization and configure it as a DataLad sibling (replacing `{REPO_NAME}` with the name your repository):
 
@@ -40,13 +39,9 @@ $ datalad siblings
 .: github(-) [https://github.com/DCAN-Labs/{REPO_NAME}.git (git)]
 ```
 
----
-
-## 3. Configure the S3 Special Remote
+### 3. Configure the S3 Special Remote
 
 Amazon S3 is used as a git-annex special remote to store and publicly distribute annexed file content. See the DataLad Handbook's [Amazon S3 as a special remote](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#) documentation for details. The flags `exporttree=yes` and `versioning=yes` are used to export using the dataset's filenames and directory structure rather than git-annex's internal object layout so that the dataset contents are displayed as human-readable filenames on AWS instead of, for example, MD5 hashes (used by `git-annex` under the hood to manage file versioning).
-
-#### Add Amazon S3 as a special remote
 
 ```bash
 git annex initremote aws \
@@ -57,20 +52,19 @@ git annex initremote aws \
     autoenable=true \
     exporttree=yes \
     versioning=yes
-```
 
-#### Configure anonymous downloads
-Configure anonymous downloads without requiring AWS credentials:
-```bash
+# Configure anonymous downloads without requiring AWS credentials:
 git annex enableremote aws publicurl=https://{REPO_NAME}.s3.us-east-2.amazonaws.com
 
 # Check your AWS configuration as needed with:
 git annex info aws
 ```
 
-#### Update the GitHub sibling configuration
+<!-- #### Update the GitHub sibling configuration -->
 
-Update with `--publish-depends aws` - this sets a publication dependency so that whenever you push your changes, the annexed contents are first pushed to the special remote and then GitHub (so that the information is updated/annexed across platforms):
+### 4. Configure Publication Dependency
+
+Configure the GitHub sibling to depend on the `aws` special remote as follows. This sets a publication dependency so that whenever you push your changes, the annexed contents are first pushed to the special remote and then GitHub (so that the information is updated/annexed across platforms):
 
 ```bash
 datalad siblings configure -d . -s github --publish-depends aws
@@ -88,7 +82,9 @@ datalad push --to github
 ```
 You should now be able to see the updated files on S3 and symlinks in Github (these are not the files, but rather symbolic links to annexed data on the S3 remote).
 
-##### ⚠️ Troubleshooting
+---
+
+## ⚠️ Troubleshooting
 
 If you get an error about file size limits, try adding `partsize=1GiB` to the configuration:
 
