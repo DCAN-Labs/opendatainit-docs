@@ -14,7 +14,7 @@ To add information about your dataset, you will create a new YAML file under `da
 
 **Tips/Guidance:**
 
-- Use this [template YAML](template-yaml.yaml), which contains a reduced set of key fields as well as pre-filled fields for your convenience (see the [AWS Open Data Registry README](https://github.com/awslabs/open-data-registry#how-are-datasets-added-to-the-registry) for a full list of required and optional fields and descriptions)
+- Use this [template YAML](../../resources/template-yaml.yaml), which contains a reduced set of key fields as well as pre-filled fields for your convenience (see the [AWS Open Data Registry README](https://github.com/awslabs/open-data-registry#how-are-datasets-added-to-the-registry) for a full list of required and optional fields and descriptions)
 - Rename the file with your exact repository name (`{REPO_NAME}.yaml`)
 - Update the empty fields with information specific to your dataset - see the existing YAML files for MIDB ODI data repos for examples:
       - [bobsrepository.yaml](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml)
