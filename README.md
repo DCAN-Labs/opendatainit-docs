@@ -1,1 +1,1 @@
-https://opendatainit-docs.readthedocs.io/en/latest/
+https://opendatainit-docs.readthedocs.io/latest/
