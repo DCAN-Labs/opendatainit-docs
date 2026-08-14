@@ -37,7 +37,6 @@ All MIDB ODI repositories are hosted under the MIDB AWS account managed by the I
 - Request that a new S3 bucket be created on using `{REPO_NAME}` as the bucket name
 - As a courtesy, it might be helpful to also mention what stage of the process you are on if you've made progress already in other areas - feel free to even link directly to the relevant page/section of this site
 
-The Informatics Hub will then generate the S3 bucket for you under the MIDB AWS account and share credentials via Box that you will use to connect your DataLad repository (the second to last step in this workflow - [Add Amazon S3 as Special Remote](datalad.md#add-amazon-s3-as-special-remote)).
-
+The Informatics Hub will then generate the S3 bucket for you under the MIDB AWS account and share credentials via Box that you will use to connect your DataLad repository (one of the final steps in this workflow - [Configure the S3 Special Remote](datalad.md#3-configure-the-s3-special-remote)).
 
 

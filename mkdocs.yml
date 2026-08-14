@@ -16,14 +16,13 @@ plugins:
 
 docs_dir: docs
 nav:
-  - About:
-     - MIDB Open Data Initiative: index.md
+  - MIDB Open Data Initiative: index.md
   - Step-by-Step Guide:
       - First Steps: sop/first-steps.md
       - Prep Source Data: sop/prep-data.md
       - AWS Submission: sop/prep-submission.md
       - Environment Setup: sop/setup.md
-      - DataLad: sop/datalad.md
+      - DataLad Setup: sop/datalad.md
   - Appendix:
       - Resources: appendix/resources.md
       - Tracking Repo Usage: appendix/access-logging.md
