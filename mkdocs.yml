@@ -2,15 +2,12 @@ site_name: MIDB Open Data Repository SOP
 
 theme:
   name: readthedocs
-  custom_dir: docs/overrides # for template overrides, used in this case for addition of "Page Last Updated: <DATE>" to pages
+  # custom_dir: docs/overrides # for template overrides, used in this case for addition of "Page Last Updated: <DATE>" to pages
 
 markdown_extensions:
   - toc:
       permalink: '🔗' 
   - admonition
-
-extra_javascript:
-  - js/extra.js
 
 plugins:
   - search
