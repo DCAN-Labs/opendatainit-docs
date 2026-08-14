@@ -10,6 +10,9 @@ Welcome to the documentation for creating and publishing datasets through the Ma
 !!! warning "WARNING: Scope & Limitations"
     **This workflow currently supports small datasets only** (i.e. that can be downloaded as one or more zip files via a web browser). Support for larger datasets is planned using DataLad [subdatasets](https://docs.datalad.org/en/stable/generated/man/datalad-subdatasets.html) organized by subject folder, with source data stored in [tier 2 storage](https://msi.umn.edu/our-resources/knowledge-base/stratus-faqs/what-tier-2-storage). 
 
+!!! note "How to use this documentation"
+    Note that these instructions are laid as step-by-step, but many tasks don't need to be completed in any specific order, so if you get stuck, feel free to move on to another section while waiting for assistance.
+
 
 
 

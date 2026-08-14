@@ -22,10 +22,12 @@ nav:
   - About:
      - MIDB Open Data Initiative: index.md
   - Step-by-Step Guide:
-      - "Step 1: Prepare Data": sop/prep-data.md 
-      - "Step 2: Create AWS S3 Bucket": sop/aws.md
-      - "Step 3: Environment Setup": sop/setup.md
-      - "Step 4: DataLad": sop/datalad.md
+      - First Steps: sop/first-steps.md
+      - Prep Source Data: sop/prep-data.md
+      - Prep DataLad Folder: sop/prep-dl-folder.md
+      - AWS Submission: sop/prep-submission.md
+      - Environment Setup: sop/setup.md
+      - DataLad: sop/datalad.md
   - Resources: 
       - Checklist: helper-files/checklist.md
       - Resources List: helper-files/resources.md

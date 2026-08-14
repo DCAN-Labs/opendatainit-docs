@@ -1,6 +1,6 @@
-# Step 4: Set up DataLad Repository
+# Initialize DataLad
 
-This guide walks through setting up DataLad using BOB's Repository as an example, including creating a sibling GitHub repository to store metadata for provenance and configuring Amazon S3 as a special remote for public data sharing. 
+This guide walks through setting up DataLad, including creating a sibling GitHub repository to store metadata for provenance and configuring Amazon S3 as a special remote for public data sharing. 
 
 !!! warning "Always remember to initialize your environment first"
     Remember to set up your environment first if you haven't already - see [Before running any DataLad workflow](setup.md#before-running-any-datalad-workflow).
@@ -20,17 +20,16 @@ datalad save -m "initial commit"
 
 ---
 
-## Generate GitHub Sibling Repository
+## Generate GitHub Sibling
 
-To create the GitHub sibling, run:
+Create a GitHub repository in the DCAN-Labs organization and configure it as a DataLad sibling with the following command. Replace `{REPO_NAME}` with the name of the GitHub repository. Note that the `--credential github` option tells DataLad to use the credential named `github`, which corresponds to the `DATALAD_CREDENTIAL_GITHUB_TOKEN` environment variable [defined during env setup](setup.md#before-running-any-datalad-workflow). 
 
 ```bash
 datalad create-sibling-github -d . DCAN-Labs/{REPO_NAME} --credential github
 ```
 
-*DataLad specifically supports credentials through an environment variable named `DATALAD_CREDENTIAL_<CREDENTIAL-NAME>_TOKEN`, so `--credential github` used to create the GitHub sibling in this command corresponds to `DATALAD_CREDENTIAL_GITHUB_TOKEN` [defined during env setup](setup.md#before-running-any-datalad-workflow).*
+To confirm that the github sibling was created, run `datalad siblings`, which should return something like this:
 
-You can confirm the creation of the sibling (named github) with the `datalad siblings` command:
 ```bash
 $ datalad siblings
 .: here(+) [git]
@@ -43,9 +42,7 @@ $ datalad siblings
 
 See [Walk-through: Amazon S3 as a special remote](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#) in the DataLad Handbook for details. The only unique aspect of this particular setup is the use of the flags `exporttree=yes` and `versioning=yes`: the default behavior of DataLad is to name files with MD5 hashes (used by `git-annex` under the hood to manage file versioning). These 2 flags allow you to display the original filenames in the public repository instead.
 
-<!-- First flag used in isolation will cause you to lose the direct linkage to the hash-based versioning system, overwriting and removing access to older file versions. The flag `versioning=yes` is therefore required in order to preserve prior file versions on AWS. -->
-
-1. Add Amazon S3 as a special remote:
+#### Add Amazon S3 as a special remote
 
 ```bash
 git annex initremote aws \
@@ -58,14 +55,18 @@ git annex initremote aws \
     versioning=yes
 ```
 
-1. Configure anonymous retrieval to allow downloads from the bucket without requiring AWS credentials:
-
+#### Configure anonymous downloads
+Configure anonymous downloads without requiring AWS credentials:
 ```bash
-git annex enableremote aws \
-    publicurl=https://{REPO_NAME}.s3.us-east-2.amazonaws.com
+git annex enableremote aws publicurl=https://{REPO_NAME}.s3.us-east-2.amazonaws.com
+
+# Check your AWS configuration as needed with:
+git annex info aws
 ```
 
-1. Update the GitHub sibling configuration with `--publish-depends aws`: this flag sets a publication dependency so that whenever you push your changes, the annexed contents are first pushed to the special remote and then GitHub (so that the information is updated/annexed across platforms):
+#### Update the GitHub sibling configuration
+
+Update with `--publish-depends aws` - this sets a publication dependency so that whenever you push your changes, the annexed contents are first pushed to the special remote and then GitHub (so that the information is updated/annexed across platforms):
 
 ```bash
 datalad siblings configure -d . -s github --publish-depends aws
@@ -81,8 +82,24 @@ Push updated file contents and data provenance for versioning to S3 and Github. 
 git annex export main --to aws
 datalad push --to github
 ```
-
 You should now be able to see the updated files on S3 and symlinks in Github (these are not the files, but rather symbolic links to annexed data on the S3 remote).
+
+##### ⚠️ Troubleshooting
+
+If you get an error about file size limits, try adding `partsize=1GiB` to the configuration:
+
+```bash
+git annex enableremote aws partsize=1GiB
+```
+
+If you get an error with datalad push, then try this instead:
+
+```bash
+git push github main
+git push github git-annex
+```
+
+---
 
 ## Starting from Scratch
 

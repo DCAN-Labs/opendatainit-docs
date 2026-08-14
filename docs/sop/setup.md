@@ -1,6 +1,19 @@
-# Step 3: Set up Environment
+# Set up Environment
 
 ## One-Time Setup Items
+
+#### DataLad Conda Environment 
+
+We recommend setting up your own Conda environment as you may run into access errors using the central CDNI `datalad` environment (`fatal: unable to access DCAN-Labs/{GIT REPO NAME}.git: Problem with the SSL CA cert (path? access rights?)`). Here is an example setup (choose a more unique name for `{ENV NAME}`, such as `datalad-{your x500}` so that you don't get it confused with the CDNI environment).
+
+```bash
+module load conda
+conda create --name {ENV NAME}
+source activate {ENV NAME}
+
+conda install -c conda-forge datalad
+conda install -c conda-forge git-annex=*=alldep*
+```
 
 #### Git Credentials 
 See [DataLad documentation for configuring git credentials](https://handbook.datalad.org/en/latest/intro/installation.html#initial-configuration). Run the following commands in your home directory on MSI:
@@ -17,21 +30,26 @@ You will need to create a personal access token on GitHub - see [GitHub document
 
 ---
 
-
 ## Before running any DataLad workflow
 
 Assuming you have completed the setup outlined above: moving forward, **before running any DataLad workflow** (e.g., updating a repository, creating a sibling, or configuring AWS), you will need to:
 
-**1. Activate the CDNI-wide datalad conda environment**
+**Activate datalad conda environment**
 
 ```bash
+module load conda
+
+# If using your own datalad conda environment (recommended)
+conda activate {ENV NAME}
+
+# If using CDNI-wide datalad conda environment 
 source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
 conda activate datalad
 ```
 
-**2. Define required environmental variables**
+**Define required environmental variables**
 
-Note: After creating your AWS S3 bucket, the Informatics Hub will provide you with AWS access and secret keys (required to connect your DataLad repository to AWS as a special remote). Also note that these credentials are distinct from your MSI credentials for tier2 access.
+Note: the Informatics Hub will provide you with AWS access and secret keys after creating the AWS bucket (see [First Steps](first-steps.md)), required to connect your DataLad repository to AWS as a special remote. Also note that these credentials are distinct from your MSI credentials for tier2 access.
 
 ```bash
 # GitHub Token

@@ -1,0 +1,32 @@
+Name:
+Description:
+Documentation:
+Contact:
+ManagedBy: Masonic Institute for the Developing Brain (MIDB) Open Data Initiative
+UpdateFrequency:
+Tags:
+  - 
+License: CC-By Attribution 4.0 International
+Citation:
+Resources:
+  - Description:
+    ARN: arn:aws:s3:::bobsrepository
+    Region: us-east-2
+    Type: S3 Bucket
+    Explore:
+    - '[Browse Bucket](https://{REPO_NAME}.s3.amazonaws.com/index.html)'
+DataAtWork:
+  Tutorials:
+    - Title:
+      URL:
+      AuthorName:
+      AuthorURL:
+  Tools & Applications:
+    - Title: 
+      URL:
+      AuthorName:
+  Publications:
+    - Title:
+      URL:
+      AuthorName:
+      AuthorURL:
