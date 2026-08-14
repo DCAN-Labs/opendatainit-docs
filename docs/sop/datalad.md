@@ -1,34 +1,38 @@
 # Initialize DataLad
 
-This guide walks through setting up DataLad, including creating a sibling GitHub repository to store metadata for provenance and configuring Amazon S3 as a special remote for public data sharing. 
+This guide walks through the steps to convert your dataset to a DataLad repository (which only need to be completed once). The workflow uses (1) GitHub to host the Git repository and DataLad/git-annex metadata for provenance and (2) Amazon S3 as a special remote for storing and publicly distributing the actual annexed file content.
 
 !!! warning "Always remember to initialize your environment first"
-    Remember to set up your environment first if you haven't already - see [Before running any DataLad workflow](setup.md#before-running-any-datalad-workflow).
+    Remember to set up your environment first- see [Before running any DataLad workflow](setup.md#before-running-any-datalad-workflow).
 
-## Initialize DataLad Repository 
+## 1. Initialize DataLad Repository 
 
-Go to your project folder, initialize datalad, and save:
+Navigate to your project directory and initialize it as a DataLad dataset, replacing `{REPO_NAME}` with the name of your project folder:
+
 ```bash
 cd /path/to/{REPO_NAME}
-datalad create --force
-datalad save -m "initial commit"
+datalad create --force # required if folder is non-empty
+datalad save -m "initial commit" 
+
+# Check for unsaved local changes any time with:
+datalad status
 ```
 
-- `--force` is necessary for non-empty folders
-- `datalad save` basically combines `git commit` and `git push` commands
-- Use `datalad status` command as needed to make sure local changes are tracked
+Note that the `datalad save` command records the current state of the dataset in a new commit, but does not push those changes to GitHub or S3.
 
 ---
 
-## Generate GitHub Sibling
+## 2. Create the GitHub Sibling
 
-Create a GitHub repository in the DCAN-Labs organization and configure it as a DataLad sibling with the following command. Replace `{REPO_NAME}` with the name of the GitHub repository. Note that the `--credential github` option tells DataLad to use the credential named `github`, which corresponds to the `DATALAD_CREDENTIAL_GITHUB_TOKEN` environment variable [defined during env setup](setup.md#before-running-any-datalad-workflow). 
+Create a GitHub repository in the DCAN-Labs organization and configure it as a DataLad sibling (replacing `{REPO_NAME}` with the name your repository):
 
 ```bash
 datalad create-sibling-github -d . DCAN-Labs/{REPO_NAME} --credential github
 ```
 
-To confirm that the github sibling was created, run `datalad siblings`, which should return something like this:
+The `--credential github` option tells DataLad to use the credential named `github`. Its token is provided by the `DATALAD_CREDENTIAL_GITHUB_TOKEN` environment variable defined during environment setup ([see details](setup.md#before-running-any-datalad-workflow)).
+
+Verify that the Github sibling was created with `datalad siblings`:
 
 ```bash
 $ datalad siblings
@@ -38,9 +42,9 @@ $ datalad siblings
 
 ---
 
-## Add Amazon S3 as Special Remote
+## 3. Configure the S3 Special Remote
 
-See [Walk-through: Amazon S3 as a special remote](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#) in the DataLad Handbook for details. The only unique aspect of this particular setup is the use of the flags `exporttree=yes` and `versioning=yes`: the default behavior of DataLad is to name files with MD5 hashes (used by `git-annex` under the hood to manage file versioning). These 2 flags allow you to display the original filenames in the public repository instead.
+Amazon S3 is used as a git-annex special remote to store and publicly distribute annexed file content. See the DataLad Handbook's [Amazon S3 as a special remote](https://handbook.datalad.org/en/latest/basics/101-139-s3.html#) documentation for details. The flags `exporttree=yes` and `versioning=yes` are used to export using the dataset's filenames and directory structure rather than git-annex's internal object layout so that the dataset contents are displayed as human-readable filenames on AWS instead of, for example, MD5 hashes (used by `git-annex` under the hood to manage file versioning).
 
 #### Add Amazon S3 as a special remote
 
