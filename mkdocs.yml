@@ -27,7 +27,7 @@ nav:
       - Resources: appendix/resources.md
       - Tracking Repo Usage: appendix/access-logging.md
       - OpenNeuro Integration: appendix/openneuro.md
-      - Maintenance: appendix/maintenance.md
+      - How to Update Repo: appendix/maintenance.md
       
       
 

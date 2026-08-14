@@ -1,18 +1,10 @@
-!!! warning "WARNING: PAGE CURRENTLY BEING UPDATED"
+# How to Update the DataLad Repository
 
-# Repository Maintenance
+## Initialize Environment
 
-## First Steps
-When working with your DataLad repository, always start by activating your conda environment and setting the necessary environment variables:
+To make updates to your DataLad repository, always start by activating your conda environment and setting the necessary environment variables - [see here](../sop/setup.md#before-running-any-datalad-workflow).
 
-```bash
-module load conda
-source activate datalad_BR
-export AWS_ACCESS_KEY_ID="<access_key_id>"
-export AWS_SECRET_ACCESS_KEY="<secret_access_key>"
-```
-
-If applicable, login via OpenNeuro CLI:
+If applicable, also login via OpenNeuro CLI:
 ```bash
 export OPENNEURO_API_KEY=<api_key>
 deno run -A jsr:@openneuro/cli login --error-reporting true
