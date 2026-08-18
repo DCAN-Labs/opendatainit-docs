@@ -19,7 +19,7 @@ To add information about your dataset, you will create a new YAML file under `da
 - Update the empty fields with information specific to your dataset - see the existing YAML files for MIDB ODI data repos for examples:
       - [bobsrepository.yaml](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/bobsrepository.yaml)
       - [infant-3t-7t-precision-mri.yaml](https://github.com/DCAN-Labs/open-data-registry/blob/main/datasets/infant-3t-7t-precision-mri.yaml)
-- **`DataAtWork > Tutorials`**: Point to a tutorial, tool, application, or publication that uses the data. If you are unsure, simply link to documentation describing the dataset structure, which should be provided for users regardless (e.g., a README, ReadTheDocs page, or an index.html file)
+- **`DataAtWork > Tutorials`**: Make your own version of the [template tutorial](https://github.com/awslabs/open-data-docs/tree/main/get-to-know-a-dataset) provided 
 - **`Resources > Description > Explore`:** make sure to replace `{REPO_NAME}` with the actual repository name 
 - Use valid YAML formatting, such as wrapping text containing [special characters](https://stackoverflow.com/a/22235064) in quotes (use online tools such as [https://jsonformatter.org/yaml-validator](https://jsonformatter.org/yaml-validator) to validate as needed)
 
